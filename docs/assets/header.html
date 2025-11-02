@@ -1,0 +1,21 @@
+<header>
+  <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+  <h1 class="site-title"><a href="/docs/index.html">たびすけ</a></h1>
+</header>
+
+<nav id="side-menu">
+  <ul>
+    <li><a href="/docs/20/20html.html">🏯 京都ガイド</a></li>
+    <li><a href="/docs/7/7html.html">🚋 情報サイト</a></li>
+    <li><a href="/docs/2/2html.html">🗾 日本語翻訳</a></li>
+    <li><a href="/docs/jobs1/jobs1.html">💼 求人情報</a></li>
+  </ul>
+
+  <div class="search-filter">
+    <label for="search-input">🔍 検索フィルター</label>
+    <div class="search-form">
+      <input type="text" id="search-input" placeholder="例：温泉、京都、短期バイト" oninput="enableSearch()">
+      <button id="search-button" onclick="performSearch()" disabled>検索</button>
+    </div>
+  </div>
+</nav>

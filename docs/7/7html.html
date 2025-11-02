@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京都市エリア　列車運行・災害情報</title>
+    <link rel="stylesheet" href="7css.css">
+    <link rel="stylesheet" href="../assets/common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<div id="common-header"></div>
+<script>
+  fetch("../assets/header.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("common-header").innerHTML = html;
+    });
+</script>
+    <div class="site-header">
+        <div class="header-container">
+            <div class="site-logo"><a href="#">情報サイトTOP</a></div>
+
+            <button class="menu-toggle" aria-label="メニューを開く/閉じる" 
+                    aria-controls="menu-links" aria-expanded="false" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav class="main-nav">
+                <ul id="menu-links">
+                    <li><a href="#runko">運行情報</a></li>
+                    <li><a href="#saigai">災害情報</a></li>
+                    <li><a href="#news">お知らせ</a></li>
+                    <li><a href="#help">ヘルプ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <main>
+        <div style="margin-bottom: 20px; padding: 10px; border: 1px solid #ccc;">
+            <strong>🚨運行状態テスト用ボタン (本番環境では削除してください)</strong><br>
+            <button onclick="updateRunkoStatus('normal')">✅ 通常運行</button>
+            <button onclick="updateRunkoStatus('delay')">⚠️ 遅れあり</button>
+            <button onclick="updateRunkoStatus('stop')">❌ 運転見合わせあり</button>
+            <hr style="margin: 10px 0;">
+            <strong>🚨災害状態テスト用ボタン</strong><br>
+            <button onclick="updateSaigaiStatus('normal')">✅ 災害情報なし</button>
+            <button onclick="updateSaigaiStatus('warning')">⚠️ 警報発令中</button>
+            <button onclick="updateSaigaiStatus('earthquake')">❌ 大地震発生</button>
+            <button onclick="updateSaigaiStatus('flood', '鴨川')">❌ 鴨川 氾濫</button>
+        </div>
+        <h1>京都交通災害情報サイト</h1>
+
+        <div class="summary-area">
+            <div class="summary-card runko-summary">
+                
+                <div id="runko-status">
+                    <div id="status-normal" class="status-item current-status">
+                        <div class="status-content">
+                            <img src="丸.png" alt="通常運行" class="status-icon">
+                            <p class="status-text">通常運行</p>
+                        </div>
+                        <a href="#runko" class="detail-link">詳細情報</a>
+                    </div>
+
+                    <div id="status-delay" class="status-item">
+                        <div class="status-content">
+                            <img src="三角.png" alt="遅れあり" class="status-icon">
+                            <p class="status-text">遅れあり</p>
+                        </div>
+                        <a href="#runko" class="detail-link">詳細情報</a>
+                    </div>
+
+                    <div id="status-stop" class="status-item">
+                        <div class="status-content">
+                            <img src="バツ.png" alt="運転見合わせあり" class="status-icon">
+                            <p class="status-text">運転見合わせあり</p>
+                        </div>
+                        <a href="#runko" class="detail-link">詳細情報</a>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="summary-card saigai-summary">
+                
+                <div id="saigai-status">
+                    <div id="saigai-normal" class="saigai-item current-saigai">
+                        <div class="saigai-content">
+                            <img src="丸.png" alt="災害情報なし" class="saigai-icon">
+                            <p class="saigai-text">災害情報なし</p>
+                        </div>
+                        <a href="#saigai" class="detail-link">詳細情報</a>
+                    </div>
+
+                    <div id="saigai-warning" class="saigai-item">
+                        <div class="saigai-content">
+                            <img src="三角.png" alt="警報発令中" class="saigai-icon">
+                            <p class="saigai-text">警報発令中</p>
+                        </div>
+                        <a href="#saigai" class="detail-link">詳細情報</a>
+                    </div>
+
+                    <div id="saigai-earthquake" class="saigai-item saigai-emergency">
+                        <div class="saigai-content">
+                            <img src="バツ.png" alt="大地震" class="saigai-icon">
+                            <p class="saigai-text">大地震発生　すぐに安全な場所へ避難！</p>
+                        </div>
+                        <a href="#saigai" class="detail-link">詳細情報</a>
+                    </div>
+
+                    <div id="saigai-flood" class="saigai-item saigai-emergency">
+                        <div class="saigai-content">
+                            <img src="バツ.png" alt="洪水" class="saigai-icon">
+                            <p class="saigai-text"><span id="river-name">○○川</span>が氾濫　高いところへ避難！</p>
+                        </div>
+                        <a href="#saigai" class="detail-link">詳細情報</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="runko">
+            <h2>京都府鉄道路線図</h2>
+            <img src="rosenzu.jpg" alt="路線図" class="rosenzu-img">
+	    <h3>京都市鉄道各社運行情報</h3>
+            <div class="company-buttons">
+                <a href="https://trafficinfo.westjr.co.jp/list.html" class="company-button" style="background-image: url('JR西日本.jpg');"><span>JR西日本</span></a>
+                <a href="https://traininfo.jr-central.co.jp/shinkansen/sp/ja/index.html" class="company-button" style="background-image: url('JR東海.jpg');"><span>JR東海</span></a>
+                
+                <a href="https://www.hankyu.co.jp/railinfo/index.html" class="company-button" style="background-image: url('阪急電鉄.jpg');"><span>阪急電鉄</span></a>
+                <a href="https://www.kintetsu.jp/unkou/unkou.html" class="company-button" style="background-image: url('近鉄.jpg');"><span>近鉄</span></a>
+                
+                <a href="https://www.keihan.co.jp/traffic/information/" class="company-button" style="background-image: url('京阪電鉄.jpg');"><span>京阪電鉄</span></a>
+                <a href="https://eizandensha.co.jp/traininfo/" class="company-button" style="background-image: url('叡山電鉄.jpg');"><span>叡山電鉄</span></a>
+                
+                <a href="https://www.keifuku.co.jp/randen_timetable.php" class="company-button" style="background-image: url('京福電鉄.jpg');"><span>京福電鉄</span></a>
+                <a href="https://www.city.kyoto.lg.jp/kotsu/category/166-0-0-0-0-0-0-0-0-0.html" class="company-button" style="background-image: url('京都市営地下鉄.jpg');"><span>京都市営地下鉄</span></a>
+            </div>
+        </div>
+        
+        <div id="saigai">災害情報セクション</div>
+        <div id="news">お知らせセクション</div>
+        <div id="help">ヘルプセクション</div>
+    </main>
+
+    <div class="site-footer">
+        <div class="footer-container">
+            <a href="#" class="footer-link">列車運行情報</a>
+            <a href="#" class="footer-link">災害情報(京都エリア)</a>
+        </div>
+    </div>
+<div id="common-footer"></div>
+<script>
+  fetch("../assets/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("common-footer").innerHTML = html;
+    });
+</script>
+<script src="../assets/common.js" defer></script>
+
+    <script>
+        // ハンバーガーメニューの開閉機能
+        function toggleMenu() {
+            const menu = document.getElementById('menu-links');
+            const toggleButton = document.querySelector('.menu-toggle');
+            
+            menu.classList.toggle('is-open');
+
+            const isExpanded = menu.classList.contains('is-open');
+            toggleButton.setAttribute('aria-expanded', isExpanded);
+        }
+
+        // 運行情報の切り替え機能
+        function updateRunkoStatus(status) {
+            const statusContainer = document.getElementById('runko-status');
+            const allStatusItems = statusContainer.querySelectorAll('.status-item');
+            
+            allStatusItems.forEach(item => {
+                item.classList.remove('current-status');
+            });
+            
+            const newStatusElement = document.getElementById(`status-${status}`);
+            if (newStatusElement) {
+                newStatusElement.classList.add('current-status');
+            }
+        }
+
+        // 災害情報の切り替え機能
+        function updateSaigaiStatus(status, riverName = '○○川') {
+            const statusContainer = document.getElementById('saigai-status');
+            const allStatusItems = statusContainer.querySelectorAll('.saigai-item');
+            
+            // 全ての状態から current-saigai クラスを削除
+            allStatusItems.forEach(item => {
+                item.classList.remove('current-saigai');
+            });
+
+            // 緊急時 (flood) の場合は、川の名前を更新
+            if (status === 'flood') {
+                const riverElement = document.getElementById('river-name');
+                if (riverElement) {
+                    riverElement.textContent = riverName;
+                }
+            }
+            
+            const newStatusElement = document.getElementById(`saigai-${status}`);
+            if (newStatusElement) {
+                newStatusElement.classList.add('current-saigai');
+            }
+        }
+    </script>
+    <script src="../assets/common.js" defer></script>
+    <script src="7js.js"></script>
+</body>
+</html>
