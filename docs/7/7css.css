@@ -355,7 +355,10 @@ main {
 
 /* 京都市営地下鉄のフォントサイズ調整（長い名称のため） */
 .company-buttons a:nth-child(8) span {
-    font-size: 1.5em; 
+    font-size: 2.0em; 
+}
+.company-buttons a:nth-child(9) span {
+    font-size: 1.7em; 
 }
 
 
@@ -451,6 +454,10 @@ main {
     }
     /* 💡スマホでの京都市営地下鉄のフォントサイズ調整 */
     .company-buttons a:nth-child(8) span {
-        font-size: 1.2em;
+        font-size: 1.6em;
+    }
+    .company-buttons a:nth-child(9) span {
+        font-size: 1.6em;
     }
 }
+
