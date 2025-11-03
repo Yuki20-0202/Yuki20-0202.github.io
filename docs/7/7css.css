@@ -130,58 +130,67 @@ main {
 
 
 /* -------------------------------------- */
-/* 運行状態表示エリアのスタイル */
+/* 運行状態表示エリアのスタイル 💡ここを修正 */
 /* -------------------------------------- */
 
 #runko-status {
     position: relative; 
-    min-height: 80px; 
+    min-height: 80px; /* 災害情報と同じ最小高さを確保 */
+    overflow: hidden; /* コンテンツがはみ出さないように */
+    
     padding-top: 10px; 
-    padding-bottom: 25px; 
+    padding-bottom: 25px; /* 詳細リンクのためのスペースを確保 */
     margin-top: 5px;
-    overflow: hidden; 
+    transition: min-height 0.3s ease-in-out; /* 高さ変更をアニメーション */
 }
 
 .status-item {
     display: flex; 
     flex-direction: column; 
     justify-content: space-between; 
-    position: absolute; 
+    position: absolute; /* absolute を再導入して重ねて表示 */
     top: 0;
     left: 0;
     width: 100%;
-    height: calc(100% - 25px); 
+    height: 100%; /* 親要素の高さに合わせる */
+    box-sizing: border-box; /* padding を含めて高さ計算 */
+    
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
     pointer-events: none;
+}
+
+.status-item.current-status {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 2; /* 表示中の要素を前面に */
 }
 
 .status-content {
     display: flex;
     align-items: center;
     flex-grow: 1; 
-}
-
-.status-item.current-status {
-    opacity: 1; 
-    pointer-events: auto;
+    padding-left: 10px; /* アイコンとテキストに余白 */
 }
 
 .status-icon {
-    width: 60px; 
-    height: 60px; 
+    width: 40px; 
+    height: 40px; 
     margin-right: 10px;
+    flex-shrink: 0; 
 }
 
 .status-text {
-    font-size: 2em; 
+    font-size: 1.9em; 
     font-weight: bold;
     margin: 0;
     color: #333; 
     flex-shrink: 1; 
+    line-height: 1.2; 
 }
 
-.detail-link {
+/* 💡 運行情報側の .detail-link のスタイルを災害情報側と統一 */
+.status-item .detail-link { 
     display: block; 
     text-align: right;
     margin-top: 5px; 
@@ -191,9 +200,13 @@ main {
     transition: color 0.2s;
     flex-shrink: 0; 
     padding-bottom: 5px; 
+    padding-right: 10px; 
+    position: absolute; /* 親要素の絶対配置を維持し、リンクを下に配置 */
+    bottom: 0;
+    right: 0;
 }
 
-.detail-link:hover {
+.status-item .detail-link:hover { /* 💡 ホバー時のスタイルも統一 */
     color: #003d7a;
 }
 
@@ -208,16 +221,18 @@ main {
 }
 
 /* -------------------------------------- */
-/* 災害状態表示エリアのスタイル */
+/* 災害状態表示エリアのスタイル (変更なし - 青枠に揃えるため) */
 /* -------------------------------------- */
 
 #saigai-status {
     position: relative; 
     min-height: 80px; 
+    overflow: hidden; 
+    
     padding-top: 10px; 
     padding-bottom: 25px; 
     margin-top: 5px;
-    overflow: hidden; 
+    transition: min-height 0.3s ease-in-out; 
 }
 
 .saigai-item {
@@ -228,35 +243,61 @@ main {
     top: 0;
     left: 0;
     width: 100%;
-    height: calc(100% - 25px); 
+    height: 100%; 
+    box-sizing: border-box;
+    
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
     pointer-events: none;
+}
+
+.saigai-item.current-saigai {
+    opacity: 1; 
+    pointer-events: auto;
+    z-index: 2; 
 }
 
 .saigai-content {
     display: flex;
     align-items: center;
     flex-grow: 1; 
-}
-
-.saigai-item.current-saigai {
-    opacity: 1; 
-    pointer-events: auto;
+    padding-left: 10px;
 }
 
 .saigai-icon {
-    width: 60px; 
-    height: 60px; 
+    width: 40px; 
+    height: 40px; 
     margin-right: 10px;
+    flex-shrink: 0; 
 }
 
 .saigai-text {
-    font-size: 2em; 
+    font-size: 1.9em; 
     font-weight: bold;
     margin: 0;
     color: #333; 
     flex-shrink: 1; 
+    line-height: 1.2;
+}
+
+.saigai-item .detail-link { 
+    display: block; 
+    text-align: right;
+    margin-top: 5px; 
+    font-size: 0.9em;
+    color: #0056b3;
+    text-decoration: underline;
+    transition: color 0.2s;
+    flex-shrink: 0; 
+    padding-bottom: 5px; 
+    padding-right: 10px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.saigai-item .detail-link:hover {
+    color: #003d7a;
 }
 
 #saigai-normal .saigai-text {
@@ -460,4 +501,5 @@ main {
         font-size: 1.6em;
     }
 }
+
 
