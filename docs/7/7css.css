@@ -1,21 +1,26 @@
-/* 基本のリセットとフォント設定 */
+/* 基本のリセットとフォント設定 (変更なし) */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     color: #333;
+    min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
+    overflow-x: hidden;
 }
 
 /* -------------------------------------- */
-/* ヘッダーのスタイル */
+/* ヘッダーのスタイル (変更なし) */
 /* -------------------------------------- */
 
 .site-header {
-    background-color: #0056b3; /* 青色 */
+    background-color: #0056b3;
     color: white;
     padding: 10px 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 修正: promptly を削除 */
-    position: relative;
-    margin-top: 80px; /* ヘッダーの高さ + 少し余裕 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1001;
 }
 
 .header-container {
@@ -26,7 +31,6 @@ body {
     margin: 0 auto;
 }
 
-/* サイトロゴ/タイトル */
 .site-logo a {
     color: white;
     text-decoration: none;
@@ -34,9 +38,7 @@ body {
     font-weight: bold;
 }
 
-/* ハンバーガーメニューボタン（スマホでのみ表示） */
 .menu-toggle {
-    margin-left: auto;              /* 右端に押し出す */
     display: block; 
     background: none;
     border: none;
@@ -46,7 +48,6 @@ body {
     padding: 5px;
 }
 
-/* ナビゲーションメニュー（ulタグ） - スマホでの初期状態 */
 #menu-links {
     list-style: none;
     margin: 0;
@@ -56,7 +57,7 @@ body {
     display: none; 
     flex-direction: column; 
     position: absolute;
-    top: 60px;
+    top: 55px;
     right: 0; 
     left: auto;
     width: 200px; 
@@ -65,7 +66,6 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* クリック時にメニューを展開する設定 (JavaScriptでこのクラスが付与される) */
 #menu-links.is-open {
     display: flex; 
 }
@@ -92,7 +92,7 @@ body {
 }
 
 /* -------------------------------------- */
-/* メインコンテンツのスタイル */
+/* メインコンテンツのスタイル (変更なし) */
 /* -------------------------------------- */
 
 main {
@@ -100,6 +100,7 @@ main {
     margin: 0 auto; 
     padding: 20px 10px; 
     min-height: 80vh; 
+    margin-top: 60px;
 }
 
 .summary-area {
@@ -116,6 +117,13 @@ main {
     border: 2px solid #ccc; 
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-height: 150px; /* ある程度の高さを確保 (必要に応じて調整) */
+    /* 💡 高さの柔軟性を確保するため、min-heightは維持しつつ、
+         カード内のコンテンツに合わせて自動で高さが変わるようにします。
+         ここでは、親要素の min-height が、その中の absolute な子要素の
+         高さには直接影響されないため、コンテンツの最大高さを考慮して設定します。
+    */
+    position: relative; /* 子要素の absolute 配置の基準とする */
 }
 
 .runko-summary {
@@ -130,58 +138,67 @@ main {
 
 
 /* -------------------------------------- */
-/* 運行状態表示エリアのスタイル */
+/* 運行状態表示エリアのスタイル 💡ここを修正 */
 /* -------------------------------------- */
 
 #runko-status {
     position: relative; 
-    min-height: 80px; 
+    min-height: 80px; /* 災害情報と同じ最小高さを確保 */
+    overflow: hidden; /* コンテンツがはみ出さないように */
+    
     padding-top: 10px; 
-    padding-bottom: 25px; 
+    padding-bottom: 25px; /* 詳細リンクのためのスペースを確保 */
     margin-top: 5px;
-    overflow: hidden; 
+    transition: min-height 0.3s ease-in-out; /* 高さ変更をアニメーション */
 }
 
 .status-item {
     display: flex; 
     flex-direction: column; 
     justify-content: space-between; 
-    position: absolute; 
+    position: absolute; /* absolute を再導入して重ねて表示 */
     top: 0;
     left: 0;
     width: 100%;
-    height: calc(100% - 25px); 
+    height: 100%; /* 親要素の高さに合わせる */
+    box-sizing: border-box; /* padding を含めて高さ計算 */
+    
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
     pointer-events: none;
+}
+
+.status-item.current-status {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 2; /* 表示中の要素を前面に */
 }
 
 .status-content {
     display: flex;
     align-items: center;
     flex-grow: 1; 
-}
-
-.status-item.current-status {
-    opacity: 1; 
-    pointer-events: auto;
+    padding-left: 10px; /* アイコンとテキストに余白 */
 }
 
 .status-icon {
-    width: 60px; 
-    height: 60px; 
+    width: 40px; 
+    height: 40px; 
     margin-right: 10px;
+    flex-shrink: 0; 
 }
 
 .status-text {
-    font-size: 2em; 
+    font-size: 1.9em; 
     font-weight: bold;
     margin: 0;
     color: #333; 
     flex-shrink: 1; 
+    line-height: 1.2; 
 }
 
-.detail-link {
+/* 💡 運行情報側の .detail-link のスタイルを災害情報側と統一 */
+.status-item .detail-link { 
     display: block; 
     text-align: right;
     margin-top: 5px; 
@@ -191,9 +208,13 @@ main {
     transition: color 0.2s;
     flex-shrink: 0; 
     padding-bottom: 5px; 
+    padding-right: 10px; 
+    position: absolute; /* 親要素の絶対配置を維持し、リンクを下に配置 */
+    bottom: 0;
+    right: 0;
 }
 
-.detail-link:hover {
+.status-item .detail-link:hover { /* 💡 ホバー時のスタイルも統一 */
     color: #003d7a;
 }
 
@@ -208,16 +229,18 @@ main {
 }
 
 /* -------------------------------------- */
-/* 災害状態表示エリアのスタイル */
+/* 災害状態表示エリアのスタイル (変更なし - 青枠に揃えるため) */
 /* -------------------------------------- */
 
 #saigai-status {
     position: relative; 
     min-height: 80px; 
+    overflow: hidden; 
+    
     padding-top: 10px; 
     padding-bottom: 25px; 
     margin-top: 5px;
-    overflow: hidden; 
+    transition: min-height 0.3s ease-in-out; 
 }
 
 .saigai-item {
@@ -228,35 +251,61 @@ main {
     top: 0;
     left: 0;
     width: 100%;
-    height: calc(100% - 25px); 
+    height: 100%; 
+    box-sizing: border-box;
+    
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
     pointer-events: none;
+}
+
+.saigai-item.current-saigai {
+    opacity: 1; 
+    pointer-events: auto;
+    z-index: 2; 
 }
 
 .saigai-content {
     display: flex;
     align-items: center;
     flex-grow: 1; 
-}
-
-.saigai-item.current-saigai {
-    opacity: 1; 
-    pointer-events: auto;
+    padding-left: 10px;
 }
 
 .saigai-icon {
-    width: 60px; 
-    height: 60px; 
+    width: 40px; 
+    height: 40px; 
     margin-right: 10px;
+    flex-shrink: 0; 
 }
 
 .saigai-text {
-    font-size: 2em; 
+    font-size: 1.9em; 
     font-weight: bold;
     margin: 0;
     color: #333; 
     flex-shrink: 1; 
+    line-height: 1.2;
+}
+
+.saigai-item .detail-link { 
+    display: block; 
+    text-align: right;
+    margin-top: 5px; 
+    font-size: 0.9em;
+    color: #0056b3;
+    text-decoration: underline;
+    transition: color 0.2s;
+    flex-shrink: 0; 
+    padding-bottom: 5px; 
+    padding-right: 10px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.saigai-item .detail-link:hover {
+    color: #003d7a;
 }
 
 #saigai-normal .saigai-text {
@@ -271,7 +320,10 @@ main {
 }
 
 
-/* メインコンテンツ内の各セクションのスタイル */
+/* -------------------------------------- */
+/* その他のスタイル (変更なし) */
+/* -------------------------------------- */
+
 #runko, #saigai, #news, #help {
     margin: 20px 0; 
     padding: 10px;
@@ -285,7 +337,6 @@ main {
     background-color: #f9f9f9;
 }
 
-/* 路線図画像のスタイル */
 .rosenzu-img {
     max-width: 90%; 
     height: auto; 
@@ -294,7 +345,7 @@ main {
 }
 
 /* -------------------------------------- */
-/* 💡鉄道各社のボタンエリア */
+/* 鉄道各社のボタンエリア (変更なし) */
 /* -------------------------------------- */
 
 .company-buttons {
@@ -308,10 +359,6 @@ main {
     display: block; 
     text-decoration: none;
     
-    /* 💡修正1: 元のテキスト（現在はspanタグ内）を非表示にする設定を削除 */
-    /* color: transparent; */ 
-    /* text-indent: -9999px; */ 
-    
     border-radius: 6px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     overflow: hidden;
@@ -319,7 +366,7 @@ main {
     position: relative;
     width: 100%;
     height: 0;
-    padding-top: 50%; /* 縦横比1:2（高さを幅の50%に） */
+    padding-top: 50%; 
     
     background-size: cover; 
     background-position: center; 
@@ -331,36 +378,31 @@ main {
     transform: translateY(-2px);
 }
 
-/* 💡修正2: 疑似要素による手動テキスト設定を削除 */
-/* .company-button::after と .company-buttons a:nth-child(n)::after を削除 */
-
-/* 💡修正3: HTMLのspanタグに対して中央配置を適用 */
 .company-button span {
     position: absolute;
     top: 50%; 
     left: 50%; 
-    transform: translate(-50%, -50%); /* 真ん中に配置 */
+    transform: translate(-50%, -50%); 
     
     color: white; 
     font-weight: bold;
-    font-size: 1.8em; /* 大きく表示 */
+    font-size: 2.4em; 
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
     text-align: center;
-    width: 90%; /* テキストの折り返しと中央配置のために幅を設定 */
+    width: 90%; 
     line-height: 1.2;
     z-index: 10;
-    
-    /* 💡京都市営地下鉄のフォントサイズ調整をここで直接行う */
 }
 
-/* 京都市営地下鉄のフォントサイズ調整（長い名称のため） */
 .company-buttons a:nth-child(8) span {
-    font-size: 1.5em; 
+    font-size: 2.0em; 
 }
-
+.company-buttons a:nth-child(9) span {
+    font-size: 1.7em; 
+}
 
 /* -------------------------------------- */
-/* フッターのスタイル */
+/* フッターのスタイル (変更なし) */
 /* -------------------------------------- */
 
 .site-footer {
@@ -402,7 +444,7 @@ main {
 }
 
 /* -------------------------------------- */
-/* レスポンシブ対応 (タブレット・PC向け) */
+/* レスポンシブ対応 (タブレット・PC向け) (変更なし) */
 /* -------------------------------------- */
 
 @media (min-width: 768px) {
@@ -445,12 +487,13 @@ main {
         padding-top: 33.3%; 
     }
     
-    /* 💡スマホでのフォントサイズ調整 */
     .company-button span {
-        font-size: 1.5em; 
+        font-size: 2.0em; 
     }
-    /* 💡スマホでの京都市営地下鉄のフォントサイズ調整 */
     .company-buttons a:nth-child(8) span {
-        font-size: 1.2em;
+        font-size: 1.6em;
+    }
+    .company-buttons a:nth-child(9) span {
+        font-size: 1.6em;
     }
 }
