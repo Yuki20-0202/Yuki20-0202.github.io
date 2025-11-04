@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japan Travel Helper - 言語サポート</title>
+    <link rel="stylesheet" href="2css.css">
+    <style>
+        /* 簡単なスタイルをインラインで追加（元のCSSがない場合を想定） */
+        body { font-family: sans-serif; margin: 20px; }
+        header, footer, section { margin-bottom: 20px; padding: 10px; border: px solid #ccc; }
+        button, select { padding: 10px; margin: 5px; cursor: pointer; }
+        textarea { width: 95%; height: 100px; padding: 10px; margin-top: 5px; }
+        .input-area { display: flex; flex-direction: column; align-items: flex-start; }
+        #phrases-container button { display: block; width: 100%; text-align: left; }
+        .word-card { border: 1px solid #eee; padding: 10px; margin: 5px 0; border-radius: 3px; cursor: pointer; }
+    </style>
+</head>
+<body>
+<link rel="stylesheet" href="../assets/common.css">
+<div id="common-header"></div>
+<script>
+  fetch("../assets/header.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("common-header").innerHTML = html;
+    });
+</script>
+    
+
+    <section id="language-selection">
+        <h3>言語を選択 / Select Language</h3>
+        <label for="interfaceLanguage">アプリの表示言語:</label>
+        <select id="interfaceLanguage" onchange="changeInterfaceLanguage(this.value)">
+            <option value="ja" selected>日本語 (Japanese)</option>
+            <option value="en">英語 (English)</option>
+            <option value="zh-CN">中国語 (Chinese Simplified)</option>
+            <option value="ko">韓国語 (Korean)</option>
+        </select>
+    </section>
+
+    <hr>
+
+    <main>
+        <section id="translation">
+            <h3 id="translation-heading">1. リアルタイム翻訳 / Instant Translation</h3>
+            <label for="targetLanguage" id="translation-target-label">翻訳先言語を選択:</label>
+            <select id="targetLanguage">
+                <option value="en" selected>英語 (English)</option>
+                <option value="zh-CN">中国語 (Chinese Simplified)</option>
+                <option value="ko">韓国語 (Korean)</option>
+                <option value="fr">フランス語 (French)</option>
+                <option value="es">スペイン語 (Spanish)</option>
+                <option value="hi">ヒンディー語 (Hindhi)</option>
+                <option value="ar">アラビア語 (Arabia)</option>
+            </select>
+
+            <div class="input-area">
+                <textarea id="inputText" placeholder="翻訳したいテキストを入力してください (Enter text to translate)"></textarea>
+                <button onclick="translateText()" id="translate-button">外部翻訳アプリで開く (Open in external app)</button>
+            </div>
+            <p class="note" id="translation-note">※この機能は、入力内容をGoogle翻訳のウェブサイトに渡し、リアルタイム翻訳を実行します。</p>
+        </section>
+
+        <hr>
+
+        <section id="conversation">
+            <h3 id="conversation-heading">2. 日常会話を読み上げ / Speak Japanese Phrases</h3>
+            <p id="conversation-instruction">聞きたいフレーズをタップしてください。日本語を読み上げます。</p>
+            
+            <div id="phrases-container">
+                <button class="phrase-button" data-text="こんにちは" id="phrase-1">👋 こんにちは (Konnichiwa)</button>
+                <button class="phrase-button" data-text="ありがとう" id="phrase-2">🙏 ありがとう (Arigatou)</button>
+                <button class="phrase-button" data-text="すみません、いくらですか？" id="phrase-3">🛍️ すみません、いくらですか？ (Excuse me, how much is this?)</button>
+                <button class="phrase-button" data-text="トイレはどこですか？" id="phrase-4">🚻 トイレはどこですか？ (Where is the toilet?)</button>
+                <button class="phrase-button" data-text="助けてください" id="phrase-5">🆘 助けてください (Help me, please)</button>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="learning">
+            <h3 id="learning-heading">3. 日本語学習 / Learn Japanese</h3>
+            <p id="learning-instruction">基本的な言葉を学んでみましょう。タップで発音を確認できます。</p>
+            
+            <div id="words-container">
+                <div class="word-card" onclick="speakPhrase('おはようございます')" id="word-1">
+                    <strong>おはようございます</strong> (Good morning)
+                </div>
+                <div class="word-card" onclick="speakPhrase('さようなら')" id="word-2">
+                    <strong>さようなら</strong> (Goodbye)
+                </div>
+                <div class="word-card" onclick="speakPhrase('はい')">
+                    <strong id="word-3-yes">はい</strong> (Yes) / <strong id="word-3-no">いいえ</strong> (No)
+                </div>
+            </div>
+        </section>
+    </main>
+
+<div id="common-footer"></div>
+<script>
+  fetch("../assets/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("common-footer").innerHTML = html;
+    });
+</script>
+<script src="../assets/common.js" defer></script>
+
+    <script>
+        // ページの全テキストの翻訳データ
+        // key: 言語コード, value: 翻訳データのオブジェクト
+        const translations = {
+            'ja': {
+                'header-tagline': 'あなたの日本での即時言語ソリューション。',
+                'translation-heading': '1. リアルタイム翻訳',
+                'translation-target-label': '翻訳先言語を選択:',
+                'inputText-placeholder': '翻訳したいテキストを入力してください',
+                'translate-button': '外部翻訳アプリで開く',
+                'translation-note': '※この機能は、入力内容をGoogle翻訳のウェブサイトに渡し、リアルタイム翻訳を実行します。',
+                'conversation-heading': '2. 日常会話を読み上げ',
+                'conversation-instruction': '聞きたいフレーズをタップしてください。日本語を読み上げます。',
+                'phrase-1': '👋 こんにちは (Konnichiwa)',
+                'phrase-2': '🙏 ありがとう (Arigatou)',
+                'phrase-3': '🛍️ すみません、いくらですか？ (Excuse me, how much is this?)',
+                'phrase-4': '🚻 トイレはどこですか？ (Where is the toilet?)',
+                'phrase-5': '🆘 助けてください (Help me, please)',
+                'learning-heading': '3. 日本語学習',
+                'learning-instruction': '基本的な言葉を学んでみましょう。タップで発音を確認できます。',
+                'word-1': '<strong>おはようございます</strong> (Good morning)',
+                'word-2': '<strong>さようなら</strong> (Goodbye)',
+                'word-3-yes': 'はい',
+                'word-3-no': 'いいえ',
+                'word-3-desc': ' (Yes) /  (No)',
+                'alert-text': 'テキストを入力してください。',
+                'lang-select-label': 'アプリの表示言語:',
+                'lang-select-title': '言語を選択',
+                'lang-select-subtitle': 'Select Language'
+            },
+            'en': {
+                'header-tagline': 'Your instant language solution in Japan.',
+                'translation-heading': '1. Instant Translation',
+                'translation-target-label': 'Select target language:',
+                'inputText-placeholder': 'Enter text to translate',
+                'translate-button': 'Open in external app',
+                'translation-note': '*This feature passes the input content to the Google Translate website to perform real-time translation.',
+                'conversation-heading': '2. Speak Japanese Phrases',
+                'conversation-instruction': 'Tap a phrase you want to hear. The Japanese will be spoken aloud.',
+                'phrase-1': '👋 Hello (Konnichiwa)',
+                'phrase-2': '🙏 Thank you (Arigatou)',
+                'phrase-3': '🛍️ Excuse me, how much is this?',
+                'phrase-4': '🚻 Where is the toilet?',
+                'phrase-5': '🆘 Help me, please',
+                'learning-heading': '3. Learn Japanese',
+                'learning-instruction': 'Let\'s learn basic words. Tap to hear the pronunciation.',
+                'word-1': '<strong>おはようございます</strong> (Good morning)',
+                'word-2': '<strong>さようなら</strong> (Goodbye)',
+                'word-3-yes': 'Yes',
+                'word-3-no': 'No',
+                'word-3-desc': ' (**はい** / **いいえ**)',
+                'alert-text': 'Please enter text.',
+                'lang-select-label': 'App Display Language:',
+                'lang-select-title': 'Select Language',
+                'lang-select-subtitle': '言語を選択'
+            },
+            // 中国語（簡体字）の例
+            'zh-CN': {
+                'header-tagline': '您在日本的即时语言解决方案。',
+                'translation-heading': '1. 实时翻译',
+                'translation-target-label': '选择目标语言:',
+                'inputText-placeholder': '输入要翻译的文本',
+                'translate-button': '在外部应用中打开',
+                'translation-note': '※此功能将输入内容传递给Google翻译网站，执行实时翻译。',
+                'conversation-heading': '2. 日常会话朗读',
+                'conversation-instruction': '点击您想听的短语。将朗读日语。',
+                'phrase-1': '👋 你好 (Konnichiwa)',
+                'phrase-2': '🙏 谢谢 (Arigatou)',
+                'phrase-3': '🛍️ 对不起，这个多少钱？ (Excuse me, how much is this?)',
+                'phrase-4': '🚻 洗手间在哪里？ (Where is the toilet?)',
+                'phrase-5': '🆘 请帮帮我 (Help me, please)',
+                'learning-heading': '3. 日语学习',
+                'learning-instruction': '让我们学习基础词汇。点击查看发音。',
+                'word-1': '<strong>おはようございます</strong> (早上好)',
+                'word-2': '<strong>さようなら</strong> (再见)',
+                'word-3-yes': '是的',
+                'word-3-no': '不是',
+                'word-3-desc': ' (**はい** / **いいえ**)',
+                'alert-text': '请输入文本。',
+                'lang-select-label': '应用显示语言:',
+                'lang-select-title': '选择语言',
+                'lang-select-subtitle': 'Select Language'
+            },
+            // 他の言語の翻訳データもここに追加...
+            'ko': {
+                'header-tagline': '일본에서 당신의 즉각적인 언어 솔루션.',
+                'translation-heading': '1. 실시간 번역',
+                'translation-target-label': '대상 언어 선택:',
+                'inputText-placeholder': '번역할 텍스트를 입력하십시오',
+                'translate-button': '외부 앱에서 열기',
+                'translation-note': '※ 이 기능은 입력 내용을 Google 번역 웹사이트로 전달하여 실시간 번역을 실행합니다.',
+                'conversation-heading': '2. 일상 회화 읽기',
+                'conversation-instruction': '듣고 싶은 문구를 탭하십시오. 일본어를 소리내어 읽습니다.',
+                'phrase-1': '👋 안녕하세요 (Konnichiwa)',
+                'phrase-2': '🙏 감사합니다 (Arigatou)',
+                'phrase-3': '🛍️ 실례합니다, 얼마예요? (Excuse me, how much is this?)',
+                'phrase-4': '🚻 화장실은 어디예요? (Where is the toilet?)',
+                'phrase-5': '🆘 도와주세요 (Help me, please)',
+                'learning-heading': '3. 일본어 학습',
+                'learning-instruction': '기본적인 단어를 배워봅시다. 탭하여 발음을 확인할 수 있습니다.',
+                'word-1': '<strong>おはようございます</strong> (Good morning)',
+                'word-2': '<strong>さようなら</strong> (Goodbye)',
+                'word-3-yes': '예',
+                'word-3-no': '아니오',
+                'word-3-desc': ' (**はい** / **いいえ**)',
+                'alert-text': '텍스트를 입력하십시오.',
+                'lang-select-label': '앱 표시 언어:',
+                'lang-select-title': '언어 선택',
+                'lang-select-subtitle': 'Select Language'
+            },
+            // ... 他の言語も同様に追加
+        };
+
+        // ページ上の要素を更新する関数
+        function changeInterfaceLanguage(lang) {
+            const t = translations[lang] || translations['ja']; // 翻訳データが存在しない場合は日本語にフォールバック
+
+            // ヘッダー
+            document.getElementById('header-tagline').textContent = t['header-tagline'];
+
+            // 言語選択セクション
+            document.querySelector('#language-selection h3').textContent = t['lang-select-title'] + ' / ' + t['lang-select-subtitle'];
+            document.getElementById('interfaceLanguage').previousElementSibling.textContent = t['lang-select-label'];
+
+            // 翻訳セクション
+            document.getElementById('translation-heading').textContent = t['translation-heading'];
+            document.getElementById('translation-target-label').textContent = t['translation-target-label'];
+            document.getElementById('inputText').placeholder = t['inputText-placeholder'];
+            document.getElementById('translate-button').textContent = t['translate-button'];
+            document.getElementById('translation-note').textContent = t['translation-note'];
+
+            // 会話セクション
+            document.getElementById('conversation-heading').textContent = t['conversation-heading'];
+            document.getElementById('conversation-instruction').textContent = t['conversation-instruction'];
+            document.getElementById('phrase-1').textContent = t['phrase-1'];
+            document.getElementById('phrase-2').textContent = t['phrase-2'];
+            document.getElementById('phrase-3').textContent = t['phrase-3'];
+            document.getElementById('phrase-4').textContent = t['phrase-4'];
+            document.getElementById('phrase-5').textContent = t['phrase-5'];
+
+            // 学習セクション
+            document.getElementById('learning-heading').textContent = t['learning-heading'];
+            document.getElementById('learning-instruction').textContent = t['learning-instruction'];
+
+            // word-cardの内容はHTMLを含むため innerHTML を使用
+            document.getElementById('word-1').innerHTML = t['word-1'];
+            document.getElementById('word-2').innerHTML = t['word-2'];
+
+            // はい/いいえ のカードは少し複雑
+            const word3Card = document.querySelector('#learning div[onclick="speakPhrase(\'はい\')"]');
+            word3Card.innerHTML = `
+                <strong id="word-3-yes">${t['word-3-yes']}</strong> / <strong id="word-3-no">${t['word-3-no']}</strong>${t['word-3-desc']}
+            `;
+            // 元の要素構造に依存しないように直接設定
+        }
+
+        // ページの初期ロード時に日本語に設定
+        document.addEventListener('DOMContentLoaded', () => {
+            changeInterfaceLanguage('ja');
+        });
+
+        // Web Speech API（読み上げ機能）
+        const synthesis = window.speechSynthesis;
+
+        function speakPhrase(text) {
+            if (synthesis.speaking) {
+                console.error('すでに読み上げ中です。');
+                return;
+            }
+            if (text !== '') {
+                const utterance = new SpeechSynthesisUtterance(text);
+                // 日本語を設定
+                utterance.lang = 'ja-JP';
+                utterance.pitch = 1; // 音程
+                utterance.rate = 1;  // 速度
+                synthesis.speak(utterance);
+            }
+        }
+
+        // 会話ボタンにイベントリスナーを設定
+        document.querySelectorAll('.phrase-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const text = button.getAttribute('data-text');
+                speakPhrase(text);
+            });
+        });
+
+        // 外部翻訳サービスへのリンク生成
+        function translateText() {
+            const text = document.getElementById('inputText').value;
+            const targetLang = document.getElementById('targetLanguage').value; // ターゲット言語を取得
+            const currentInterfaceLang = document.getElementById('interfaceLanguage').value; // 現在の表示言語を取得
+            const alertText = translations[currentInterfaceLang]?.['alert-text'] || translations['ja']['alert-text'];
+
+            if (text.trim() === '') {
+                alert(alertText);
+                return;
+            }
+            // Google翻訳のURLを生成（ソース言語は自動検出、ターゲット言語は選択された言語を使用）
+            const encodedText = encodeURIComponent(text);
+            // sl=auto: ソース言語を自動検出, tl=ターゲット言語
+            const googleTranslateUrl = `https://translate.google.com/?sl=auto&tl=${targetLang}&text=${encodedText}&op=translate`;
+            window.open(googleTranslateUrl, '_blank');
+        }
+    </script>
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuIcon = document.querySelector(".menu-icon");
+    const sideMenu = document.getElementById("side-menu");
+
+    if (menuIcon && sideMenu) {
+      menuIcon.addEventListener("click", function () {
+        if (sideMenu.style.left === "0px") {
+          sideMenu.style.left = "-250px";
+        } else {
+          sideMenu.style.left = "0px";
+        }
+      });
+    }
+  });
+</script>
+<script src="2js.js"></script>
+</body>
+</html>
