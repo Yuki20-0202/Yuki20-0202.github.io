@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>たびすけ</title>
+  <link rel="stylesheet" href="top1/top1_style.css">
+  <link rel="stylesheet" href="assets/common.css">
+</head>
+<body>
+
+<div id="common-header"></div>
+<script>
+  fetch("assets/header.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("common-header").innerHTML = html;
+    });
+</script>
+
+<section id="top1backimg">
+    <div class="overlay"></div>
+    <div class="hero-text">
+  <h2>たびすけ</h2>
+  <p>旅行に関する情報サイト！</p>
+    </div>
+</section>
+<div class="info-section-wrapper">
+<section id="tourism" class="info-section">
+  <a href="20/20html.html" class="button-link">
+  <div class="section-content">
+    <h2>日本の文化</h2>
+    <p>日本の文化を紹介します。</p>
+  </div>
+  </a>
+</section>
+
+<section id="filter" class="info-section">
+  <a href="7/7html.html" class="button-link">
+  <div class="section-content">
+    <h2>情報サイト</h2>
+    <p>運行情報や災害情報を記載しています．</p>
+  </div>
+  </a>
+</section>
+
+<section id="trans" class="info-section">
+  <a href="2/2html.html" class="button-link">
+  <div class="section-content">
+    <h2>日本語翻訳</h2>
+    <p>日本語翻訳や簡単なあいさつなどの言葉を学ぶことができます．</p>
+  </div>
+  </a>
+</section>
+
+<section id="jobs" class="info-section">
+  <a href="jobs1/jobs1.html" class="button-link">
+  <div class="section-content">
+    <h2>求人情報</h2>
+    <p>観光地での仕事情報を掲載しています。募集もできます．</p>
+  </div>
+  </a>
+</section>
+</div>
+<div id="common-footer"></div>
+<script>
+  fetch("assets/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("common-footer").innerHTML = html;
+    });
+</script>
+  <script src="assets/common.js" defer></script>
+  <script src="top1/top1_cript.js"></script>
+</body>
+</html>

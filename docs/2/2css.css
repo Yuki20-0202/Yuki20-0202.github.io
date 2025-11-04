@@ -1,0 +1,189 @@
+/* 基本設定 */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding-top: 80px; /* ヘッダーの高さ分だけ全体を押し下げる */
+    padding: 0;
+    background-color: #f4f7f6; /* 薄い背景色 */
+    color: #333;
+}
+
+h2 {
+    background-color: #afeeee; /* 水色ヘッダー部分 */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+    margin: 0;
+    font-size: 1.8em;
+}
+
+#header-tagline {
+    font-size: 1em;
+    margin-top: 0px;
+    color: #ffffff; /* ヘッダーサブタイトルの色 */
+}
+
+main {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+#language-selection {
+  margin-top: 90px; /* ヘッダーの高さ分 */
+}
+
+section {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    padding: 10px; 
+    border: 1px solid #ccc; 
+}
+
+h3 {
+    color: #1e88e5; /* 青色（視認性） */
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #ccc;
+    margin: 30px 0;
+}
+
+/* リアルタイム翻訳セクション */
+#translation label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* 【追加】ターゲット言語選択のスタイル */
+#targetLanguage {
+    padding: 10px;
+    margin-bottom: 15px; /* 下にスペースを追加 */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+    width: 100%; /* 幅を100%に設定 */
+    box-sizing: border-box;
+    appearance: none; /* デフォルトの矢印を非表示 (任意) */
+    background-color: #e8f5e9; /* 薄い緑の背景 */
+}
+.input-area {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#inputText {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+#translation button {
+    background-color: #4CAF50; /* 緑色 */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s;
+}
+
+#translation button:hover {
+    background-color: #45a049;
+}
+
+.note {
+    font-size: 0.85em;
+    color: #666;
+    margin-top: 15px;
+}
+
+/* 日常会話の読み上げセクション */
+#phrases-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.phrase-button {
+    background-color: #fff3e0; /* 薄いオレンジ色 */
+    color: #e65100; /* 濃いオレンジ色 */
+    border: 2px solid #ffcc80;
+    padding: 15px;
+    border-radius: 25px; /* 丸みを強調 */
+    cursor: pointer;
+    font-size: 1.05em;
+    font-weight: bold;
+    flex-grow: 1; /* スペースに応じて拡大 */
+    min-width: 150px;
+    text-align: left;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.phrase-button:hover {
+    background-color: #ffe0b2;
+}
+
+.phrase-button:active {
+    transform: scale(0.98); /* タップした際の視覚的なフィードバック */
+}
+
+/* 日本語学習セクション */
+#words-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* レスポンシブなグリッド */
+    gap: 15px;
+}
+
+.word-card {
+    background-color: #e3f2fd; /* 薄い水色 */
+    border-left: 5px solid #2196f3; /* アクセントライン */
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s;
+    line-height: 1.5;
+}
+
+.word-card:hover {
+    background-color: #bbdefb;
+}
+
+.word-card strong {
+    font-size: 1.1em;
+    color: #1565c0;
+    display: block; /* 日本語を強調 */
+}
+
+
+/* スマートフォン対応 */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    #phrases-container {
+        flex-direction: column; /* スマホでは縦に並べる */
+    }
+
+    .phrase-button {
+        min-width: 100%;
+        text-align: center;
+    }
+}
