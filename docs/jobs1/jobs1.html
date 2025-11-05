@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>観光地求人情報</title>
+  <link rel="stylesheet" href="jobs1_style.css">
+  <link rel="stylesheet" href="../assets/common.css">
+</head>
+<body>
+
+<div id="common-header"></div>
+<script>
+  fetch("../assets/header.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("common-header").innerHTML = html;
+    });
+</script>
+
+<div class="titlesite">
+  <h1>観光地求人情報</h1>
+  <p class="subtitle">地域の魅力を支えるお仕事を見つけよう！</p>
+  <button class="scroll-to-post">求人を掲載したい方はこちら</button>
+</div>
+
+<main>
+    <section>
+      <h2>💼 求人一覧</h2>
+
+      <div class="job-card">
+      <h3 class="job-title">一緒に働きませんか？温泉旅館スタッフ募集！</h3>
+      <p class="job-desc">接客・清掃・調理補助などを担当していただきます。未経験でも安心してご応募いただけるよう、先輩スタッフが丁寧にサポートします。 </p>
+      <ul class="job-info">
+        <li><strong>勤務時間：</strong>8:00〜17:00（休憩1時間）</li>
+        <li><strong>給料：</strong>時給1,100円〜</li>
+        <li><strong>期間：</strong>2025年11月〜2026年3月</li>
+      </ul>
+      <div class="job-company">♨️ 湯の里旅館</div>
+             <button class="detail-button">詳細はこちら</button>
+      </div>
+
+    <div class="job-card">
+      <h3 class="job-title">地域の魅力を伝えるお仕事、始めませんか？</h3>
+      <p class="job-desc">
+        観光案内所での接客業務を中心に、国内外の観光客への道案内や施設紹介、パンフレットの配布、簡単な翻訳対応などを行っていただきます。地域の魅力を伝える大切な役割で、英語や中国語などの語学スキルを活かせる場面も多くあります。未経験でも研修があるので安心して... 
+      </p>
+      <ul class="job-info">
+        <li><strong>勤務時間：</strong>9:00〜18:00（シフト制）</li>
+        <li><strong>給料：</strong>時給1,200円</li>
+        <li><strong>期間：</strong>通年（契約更新あり）</li>
+      </ul>
+      <button class="detail-button">詳細はこちら</button>
+      <div class="job-company">🌸 京都観光案内センター</div>
+    </div>
+    <div class="job-card">
+      <h3 class="job-title">旅の思い出を届けるお手伝い、しませんか？</h3>
+      <p class="job-desc">
+      観光地のお土産店で、レジ対応や商品の品出し、陳列の整備、簡単な接客対応をお願いします。お客様とのちょっとした会話やおすすめ商品の紹介など、旅の思い出づくりをサポートするやりがいのある仕事です。高齢者の方や未経験の方でも安心して働けるように... 
+      </p>
+      <ul class="job-info">
+        <li><strong>勤務時間：</strong>10:00〜16:00（週3〜OK）</li>
+        <li><strong>給料：</strong>時給1,050円</li>
+        <li><strong>期間：</strong>12月〜2月（短期）</li>
+      </ul>
+      <button class="detail-button">詳細はこちら</button>
+      <div class="job-company">🎁 箱根みやげ本舗</div>
+    </div>
+
+    <div class="job-card">
+      <h3 class="job-title">雪と笑顔に囲まれて働きませんか？</h3>
+      <p class="job-desc">
+      スキー場でのリフト操作や安全確認、乗降サポート、ゲストへの案内業務などを担当していただきます。雪景色の中での仕事は体力を使いますが、スタッフ同士の連携やお客様とのふれあいが多く、冬ならではの魅力が詰まった職場です。防寒対策や休憩設備も整っているので安心して... 
+      </p>
+      <ul class="job-info">
+        <li><strong>勤務時間：</strong>7:30〜16:30（休憩あり）</li>
+        <li><strong>給料：</strong>日給9,000円</li>
+        <li><strong>期間：</strong>12月〜3月（冬季限定）</li>
+      </ul>
+      <button class="detail-button">詳細はこちら</button>
+      <div class="job-company">⛷️ 妙高高原スキーリゾート</div>
+    </div>
+      
+    </section>
+
+    <section id="post-request">
+      <h2>📝 求人掲載依頼（投稿者向け）</h2>
+      <div class="post-request">
+        <p>求人情報を掲載したい方は、以下のフォームにご記入ください。</p>
+        <input type="text" placeholder="施設名・店舗名">
+        <input type="text" placeholder="勤務地（例：北海道・函館市）">
+        <textarea rows="4" placeholder="仕事内容・条件など"></textarea>
+        <input type="text" placeholder="連絡先（電話番号またはメール）">
+        <button>掲載依頼を送信</button>
+      </div>
+    </section>
+</main>
+  <button class="scroll-to-top" style="display: none;">📍 一番上まで戻る</button>
+<div id="common-footer"></div>
+<script>
+  fetch("../assets/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("common-footer").innerHTML = html;
+    });
+</script>
+  <script src="../assets/common.js" defer></script>
+  <script src="jobs1_cript.js"></script>
+</body>
+</html>
