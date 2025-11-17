@@ -1,1 +1,0 @@
-resultsDiv.innerHTML = `<p><span class="query-highlight">「${query}」</span>に関する検索結果：</p>`;
