@@ -1,0 +1,329 @@
+/* 基本設定 */
+body {
+    font-family: 'Noto Serif JP', 'Roboto', sans-serif;
+    margin: 0;
+    padding:0;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f8f8;
+}
+
+.container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+h2 {
+    background-color: #5a2c2c; /* 京都らしい落ち着いた赤茶色 */
+    color: #fff;
+    box-shadow: none;
+    text-align: center;
+    margin: 0;
+    margin-top: 80px;
+    font-size: 2.2rem;
+    font-family: 'Noto Serif JP', serif;
+    padding: 1rem 0;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+.navkt {
+  background-color: #5a2c2c; /* 京都らしい落ち着いた赤茶色 */
+  padding: 10px 0; /* 上下の余白を追加（任意） */
+  margin-top: -10px; /* 影の隙間を埋める場合に有効 */
+}
+.navkt ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* 小さい画面で改行 */
+}
+.navkt ul li {
+    margin: 0 15px;
+}
+.navkt a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease;
+    border-radius: 4px;
+}
+.navkt a:hover {
+    background-color: #7b4c4c;
+}
+
+
+/* ヒーローセクション */
+#hero {
+    background: url('https://example.com/hero_kyoto_background.jpg') no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
+    position: relative;
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.4); /* オーバーレイ */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+#hero h3 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-family: 'Noto Serif JP', serif;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+#hero p {
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin: 0 auto;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+/* 各コンテンツセクション */
+.section-content {
+    padding: 60px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.section-content h3 {
+    font-size: 2.5rem;
+    color: #5a2c2c;
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 10px;
+    font-family: 'Noto Serif JP', serif;
+}
+
+.section-content h3::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 80px;
+    height: 3px;
+    background-color: #d4a762; /* 金色 */
+}
+
+.section-content h4 {
+    font-size: 1.8rem;
+    color: #4a4a4a;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    border-left: 5px solid #d4a762;
+    padding-left: 10px;
+    font-family: 'Noto Serif JP', serif;
+}
+
+.section-content p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+/* 画像ラッパー */
+.image-wrapper {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.image-wrapper img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border: 3px solid #eee; /* 画像の枠 */
+}
+
+
+/* テーブル */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0 40px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    background-color: #fff;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: #5a2c2c;
+    font-family: 'Noto Serif JP', serif;
+}
+
+td ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+td ul li {
+    margin-bottom: 5px;
+}
+
+/* **マナーセクションの強調表示** */
+#manners strong {
+    color: #d82e2e; /* 警告や重要性を示す赤色 */
+    font-weight: 700; /* 強調のために太字を維持 */
+}
+
+/* 背景色 */
+.bg-light {
+    background-color: #f2f2f2;
+}
+
+/* フッター */
+.container1 {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 50px;
+}
+
+.container1 p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header nav ul li {
+        margin: 5px 0;
+    }
+
+    #hero {
+        padding: 80px 20px;
+    }
+
+    #hero h2 {
+        font-size: 2.2rem;
+    }
+
+    #hero p {
+        font-size: 1.1rem;
+    }
+
+    .section-content h2 {
+        font-size: 2rem;
+    }
+
+    .section-content h3 {
+        font-size: 1.5rem;
+    }
+
+    th, td {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    header nav a {
+        font-size: 0.9rem;
+        padding: 3px 8px;
+    }
+
+    #hero {
+        padding: 60px 10px;
+    }
+
+    #hero h2 {
+        font-size: 1.8rem;
+    }
+
+    #hero p {
+        font-size: 1rem;
+    }
+
+    .section-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .section-content h3 {
+        font-size: 1.3rem;
+    }
+
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr {
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
+
+    td:before {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+        color: #5a2c2c;
+    }
+
+/* 各セクションのtd:beforeの内容をカスタマイズ (修正なし) */
+    #culture table tbody tr:nth-of-type(1) td:nth-of-type(1):before { content: "祭り・行事"; }
+    #culture table tbody tr:nth-of-type(1) td:nth-of-type(2):before { content: "詳細"; }
+    #culture table tbody tr:nth-of-type(2) td:nth-of-type(1):before { content: "分野"; }
+    #culture table tbody tr:nth-of-type(2) td:nth-of-type(2):before { content: "詳細"; }
+
+    #buildings table tbody tr:nth-of-type(1) td:nth-of-type(1):before { content: "建物"; }
+    #buildings table tbody tr:nth-of-type(1) td:nth-of-type(2):before { content: "詳細"; }
+    #buildings table tbody tr:nth-of-type(2) td:nth-of-type(1):before { content: "建物"; }
+    #buildings table tbody tr:nth-of-type(2) td:nth-of-type(2):before { content: "詳細"; }
+    #buildings table tbody tr:nth-of-type(3) td:nth-of-type(1):before { content: "建物"; }
+    #buildings table tbody tr:nth-of-type(3) td:nth-of-type(2):before { content: "詳細"; }
+
+    #shops table tbody td:nth-of-type(1):before { content: "店名"; }
+    #shops table tbody td:nth-of-type(2):before { content: "ジャンル"; }
+
+    #manners table tbody td:nth-of-type(1):before { content: "場面"; }
+    #manners table tbody td:nth-of-type(2):before { content: "マナー"; }
+}
