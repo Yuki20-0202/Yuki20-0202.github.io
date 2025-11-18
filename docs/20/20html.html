@@ -9,6 +9,17 @@
 <body>
 <link rel="stylesheet" href="../assets/common.css">
 <div id="common-header"></div>
+<script>
+  fetch("../assets/header.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("common-header").innerHTML = html;
+    });
+</script>
+    <div class="headertitle" id="headtitle">
+        <h1 id="header-title">🇯🇵 Japan Travel Helper</h1>
+        <p id="header-tagline">Your instant language solution in Japan.</p>
+    </div>
 
     <header>
         <div class="header-main-row">
@@ -53,5 +64,6 @@
 
 </body>
 </html>
+
 
 
