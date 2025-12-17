@@ -372,8 +372,19 @@ main > div[style] {
     gap: 15px; 
     padding: 10px 0;
     overflow-x: hidden; /* 🚨 追加 */
-}
 
+    
+}
+#saigai {
+    /* 既存の #saigai の設定を上書き */
+    display: grid; 
+    grid-template-columns: 1fr 1fr; /* PCでは2列均等幅 */
+    gap: 15px; /* ボタン間の間隔 */
+    padding: 10px; /* 既存のpaddingを維持 */
+    margin: 20px 0; /* 既存のmarginを維持 */
+    background-color: #f9f9f9; /* 既存の背景色を維持 */
+    overflow-x: hidden;
+}
 .company-button {
     display: block; 
     text-decoration: none;
@@ -608,3 +619,4 @@ main > div[style] {
         font-size: 1.6em;
     }
 }
+
