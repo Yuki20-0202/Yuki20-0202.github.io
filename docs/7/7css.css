@@ -1,19 +1,19 @@
 /* 基本のリセットとフォント設定 */
 /* 🚨 最終対策: すべての要素にborder-boxを適用し、横スクロールを防ぐ設定を強制 */
 * {
-    box-sizing: border-box; /* 全要素にパディング/ボーダーを幅の内側に収める設定を強制 */
-    min-width: 0; /* フレックスアイテムなどがはみ出すのを防ぐ */
-    /* 🚨 強化: 全ての要素の横方向のはみ出しを隠す（一部ブラウザの挙動対策） */
-    max-width: 100%; 
+    box-sizing: border-box; /* 全要素にパディング/ボーダーを幅の内側に収める設定を強制 */
+    min-width: 0; /* フレックスアイテムなどがはみ出すのを防ぐ */
+    /* 🚨 強化: 全ての要素の横方向のはみ出しを隠す（一部ブラウザの挙動対策） */
+    max-width: 100%; 
 }
 
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: #333;
-    overflow-x: hidden !important; /* 🚨 最強の対策: bodyの横スクロールを強制的に禁止 */
-    width: 100vw; /* 🚨 強化: ビューポートの幅を正確に指定 */
-    position: relative; 
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+    overflow-x: hidden !important; /* 🚨 最強の対策: bodyの横スクロールを強制的に禁止 */
+    width: 100vw; /* 🚨 強化: ビューポートの幅を正確に指定 */
+    position: relative; 
 }
 
 /* -------------------------------------- */
@@ -21,79 +21,79 @@ body {
 /* -------------------------------------- */
 
 .site-header {
-    background-color: #0056b3;
-    color: white;
-    padding: 10px 20px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: relative;
-    margin-top: 80px;
-    width: 100%; 
-    overflow-x: hidden; /* 🚨 追加 */
+    background-color: #0056b3;
+    color: white;
+    padding: 10px 20px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin-top: 80px;
+    width: 100%; 
+    overflow-x: hidden; /* 🚨 追加 */
 }
 
 .header-container {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%; 
-    overflow-x: hidden; /* 🚨 追加 */
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%; 
+    overflow-x: hidden; /* 🚨 追加 */
 }
 
 /* サイトロゴ/タイトル */
 .site-logo a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.5em;
-    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 /* ハンバーガーメニューボタン（完全に非表示） */
 .menu-toggle {
-    display: none !important; 
+    display: none !important; 
 }
 
 /* ナビゲーションメニュー（ulタグ） */
 .main-nav {
-    margin-left: auto;
-    overflow-x: hidden; /* navの横スクロールを局所的に禁止 */
+    margin-left: auto;
+    overflow-x: hidden; /* navの横スクロールを局所的に禁止 */
 }
 
 #menu-links {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    display: flex; 
-    flex-direction: row; 
-    width: auto;
-    background: none;
-    box-shadow: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    display: flex; 
+    flex-direction: row; 
+    width: auto;
+    background: none;
+    box-shadow: none;
 }
 
 #menu-links li {
-    border-top: none;
+    border-top: none;
 }
 
 #menu-links li:first-child {
-    border-top: none;
+    border-top: none;
 }
 
 #menu-links a {
-    display: block;
-    padding: 10px 15px;
-    color: white;
-    text-decoration: none;
-    font-size: 1.1em;
-    transition: background-color 0.3s;
-    border-radius: 5px; 
-    margin: 0 5px; 
-    white-space: nowrap; 
+    display: block;
+    padding: 10px 15px;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: background-color 0.3s;
+    border-radius: 5px; 
+    margin: 0 5px; 
+    white-space: nowrap; 
 }
 
 #menu-links a:hover {
-    background-color: #003d7a;
+    background-color: #003d7a;
 }
 
 /* -------------------------------------- */
@@ -101,50 +101,50 @@ body {
 /* -------------------------------------- */
 
 main {
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 20px 10px; 
-    min-height: 80vh; 
-    overflow-x: hidden; /* mainの横スクロールを局所的に禁止 */
-    width: 100%; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 20px 10px; 
+    min-height: 80vh; 
+    overflow-x: hidden; /* mainの横スクロールを局所的に禁止 */
+    width: 100%; 
 }
 
 /* 🚨 開発用ボタンのdivを修正 */
 main > div[style] {
-    margin-bottom: 20px; 
-    padding: 10px; 
-    border: 1px solid #ccc;
-    width: 100%;
-    overflow-x: hidden; /* 内部のボタンによるはみ出しを防ぐ */
+    margin-bottom: 20px; 
+    padding: 10px; 
+    border: 1px solid #ccc;
+    width: 100%;
+    overflow-x: hidden; /* 内部のボタンによるはみ出しを防ぐ */
 }
 
 .summary-area {
-    display: flex; 
-    flex-wrap: wrap; 
-    gap: 20px; 
-    margin-bottom: 30px; 
-    width: 100%; 
-    overflow-x: hidden; /* 🚨 追加 */
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 20px; 
+    margin-bottom: 30px; 
+    width: 100%; 
+    overflow-x: hidden; /* 🚨 追加 */
 }
 
 .summary-card {
-    flex: 1 1 45%; 
-    min-width: 300px; 
-    padding: 15px;
-    border: 2px solid #ccc; 
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow-x: hidden; /* 🚨 追加 */
+    flex: 1 1 45%; 
+    min-width: 300px; 
+    padding: 15px;
+    border: 2px solid #ccc; 
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-x: hidden; /* 🚨 追加 */
 }
 
 .runko-summary {
-    background-color: #ffffff; 
-    border-color: #007bff;
+    background-color: #ffffff; 
+    border-color: #007bff;
 }
 
 .saigai-summary {
-    background-color: #ffffff; 
-    border-color: #dc3545;
+    background-color: #ffffff; 
+    border-color: #dc3545;
 }
 
 
@@ -153,93 +153,93 @@ main > div[style] {
 /* -------------------------------------- */
 
 #runko-status {
-    position: relative; 
-    min-height: 80px;
-    overflow: hidden; 
-    padding-top: 10px; 
-    padding-bottom: 25px; 
-    margin-top: 5px;
-    transition: min-height 0.3s ease-in-out;
+    position: relative; 
+    min-height: 80px;
+    overflow: hidden; 
+    padding-top: 10px; 
+    padding-bottom: 25px; 
+    margin-top: 5px;
+    transition: min-height 0.3s ease-in-out;
 }
 
 .status-item {
-    display: flex; 
-    flex-direction: column; 
-    justify-content: space-between; 
-    position: absolute; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    pointer-events: none;
-    overflow-x: hidden; /* 🚨 追加 */
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none;
+    overflow-x: hidden; /* 🚨 追加 */
 }
 
 .status-item.current-status {
-    opacity: 1;
-    pointer-events: auto;
-    z-index: 2;
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 2;
 }
 
 .status-content {
-    display: flex;
-    align-items: center;
-    flex-grow: 1; 
-    padding-left: 10px;
-    overflow-x: hidden; /* 🚨 追加 */
+    display: flex;
+    align-items: center;
+    flex-grow: 1; 
+    padding-left: 10px;
+    overflow-x: hidden; /* 🚨 追加 */
 }
 
 .status-icon {
-    width: 40px; 
-    height: 40px; 
-    margin-right: 10px;
-    flex-shrink: 0; 
-    max-width: 100%; 
-    height: auto; 
+    width: 40px; 
+    height: 40px; 
+    margin-right: 10px;
+    flex-shrink: 0; 
+    max-width: 100%; 
+    height: auto; 
 }
 
 .status-text {
-    font-size: 1.9em; 
-    font-weight: bold;
-    margin: 0;
-    color: #333; 
-    flex-shrink: 1; 
-    line-height: 1.2; 
-    overflow-wrap: break-word; 
-    width: 100%; 
+    font-size: 1.9em; 
+    font-weight: bold;
+    margin: 0;
+    color: #333; 
+    flex-shrink: 1; 
+    line-height: 1.2; 
+    overflow-wrap: break-word; 
+    width: 100%; 
 }
 
 /* 運行情報側の .detail-link のスタイル */
-.status-item .detail-link { 
-    display: block; 
-    text-align: right;
-    margin-top: 5px; 
-    font-size: 0.9em;
-    color: #0056b3;
-    text-decoration: underline;
-    transition: color 0.2s;
-    flex-shrink: 0; 
-    padding-bottom: 5px; 
-    padding-right: 10px; 
-    position: absolute;
-    bottom: 0;
-    right: 0;
+.status-item .detail-link { 
+    display: block; 
+    text-align: right;
+    margin-top: 5px; 
+    font-size: 0.9em;
+    color: #0056b3;
+    text-decoration: underline;
+    transition: color 0.2s;
+    flex-shrink: 0; 
+    padding-bottom: 5px; 
+    padding-right: 10px; 
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
 
 .status-item .detail-link:hover {
-    color: #003d7a;
+    color: #003d7a;
 }
 
 #status-normal .status-text {
-    color: #28a745; 
+    color: #28a745; 
 }
 #status-delay .status-text {
-    color: #ffc107; 
+    color: #ffc107; 
 }
 #status-stop .status-text {
-    color: #dc3545; 
+    color: #dc3545; 
 }
 
 /* -------------------------------------- */
@@ -247,190 +247,219 @@ main > div[style] {
 /* -------------------------------------- */
 
 #saigai-status {
-    position: relative; 
-    min-height: 80px; 
-    overflow: hidden; 
-    
-    padding-top: 10px; 
-    padding-bottom: 25px; 
-    margin-top: 5px;
-    transition: min-height 0.3s ease-in-out; 
+    position: relative; 
+    min-height: 80px; 
+    overflow: hidden; 
+    
+    padding-top: 10px; 
+    padding-bottom: 25px; 
+    margin-top: 5px;
+    transition: min-height 0.3s ease-in-out; 
 }
 
 .saigai-item {
-    display: flex; 
-    flex-direction: column; 
-    justify-content: space-between;
-    position: absolute; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; 
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    pointer-events: none;
-    overflow-x: hidden; /* 🚨 追加 */
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between;
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none;
+    overflow-x: hidden; /* 🚨 追加 */
 }
 
 .saigai-item.current-saigai {
-    opacity: 1; 
-    pointer-events: auto;
-    z-index: 2; 
+    opacity: 1; 
+    pointer-events: auto;
+    z-index: 2; 
 }
 
 .saigai-content {
-    display: flex;
-    align-items: center;
-    flex-grow: 1; 
-    padding-left: 10px;
-    overflow-x: hidden; /* 🚨 追加 */
+    display: flex;
+    align-items: center;
+    flex-grow: 1; 
+    padding-left: 10px;
+    overflow-x: hidden; /* 🚨 追加 */
 }
 
 .saigai-icon {
-    width: 40px; 
-    height: 40px; 
-    margin-right: 10px;
-    flex-shrink: 0; 
-    max-width: 100%; 
-    height: auto; 
+    width: 40px; 
+    height: 40px; 
+    margin-right: 10px;
+    flex-shrink: 0; 
+    max-width: 100%; 
+    height: auto; 
 }
 
 .saigai-text {
-    font-size: 1.9em; 
-    font-weight: bold;
-    margin: 0;
-    color: #333; 
-    flex-shrink: 1; 
-    line-height: 1.2;
-    overflow-wrap: break-word;
-    width: 100%; 
+    font-size: 1.9em; 
+    font-weight: bold;
+    margin: 0;
+    color: #333; 
+    flex-shrink: 1; 
+    line-height: 1.2;
+    overflow-wrap: break-word;
+    width: 100%; 
 }
 
-.saigai-item .detail-link { 
-    display: block; 
-    text-align: right;
-    margin-top: 5px; 
-    font-size: 0.9em;
-    color: #0056b3;
-    text-decoration: underline;
-    transition: color 0.2s;
-    flex-shrink: 0; 
-    padding-bottom: 5px; 
-    padding-right: 10px;
-    position: absolute;
-    bottom: 0;
-    right: 0;
+.saigai-item .detail-link { 
+    display: block; 
+    text-align: right;
+    margin-top: 5px; 
+    font-size: 0.9em;
+    color: #0056b3;
+    text-decoration: underline;
+    transition: color 0.2s;
+    flex-shrink: 0; 
+    padding-bottom: 5px; 
+    padding-right: 10px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
 
 .saigai-item .detail-link:hover {
-    color: #003d7a;
+    color: #003d7a;
 }
 
 #saigai-normal .saigai-text {
-    color: #28a745; 
+    color: #28a745; 
 }
 #saigai-warning .saigai-text {
-    color: #ffc107; 
+    color: #ffc107; 
 }
 .saigai-emergency .saigai-text {
-    color: #dc3545; 
-    font-weight: 900; 
+    color: #dc3545; 
+    font-weight: 900; 
 }
 
 
 /* メインコンテンツ内の各セクションのスタイル */
 #runko, #saigai, #news, #help {
-    margin: 20px 0; 
-    padding: 10px;
-    width: 100%; 
-    overflow-x: hidden; /* 🚨 追加 */
+    margin: 20px 0; 
+    padding: 10px;
+    width: 100%; 
+    overflow-x: hidden; /* 🚨 追加 */
 }
 
 #runko, #news {
-    background-color: #f0f0f0; 
+    background-color: #f0f0f0; 
 }
 
 #saigai, #help {
-    background-color: #f9f9f9;
+    background-color: #f9f9f9;
 }
 
-/* 路線図画像のスタイル */
-.rosenzu-img {
-    max-width: 100%; 
-    height: auto; 
-    display: block; 
-    margin: 10px auto 30px auto; 
+/* -------------------------------------- */
+/* 🚨 路線図表示エリアのスタイル (追加) */
+/* -------------------------------------- */
+
+.map-container {
+    /* 路線図を表示する枠のサイズと境界を設定 */
+    width: 100%;
+    height: 400px; /* 🚨 高さを固定。必要に応じて調整してください。 */
+    overflow: auto; /* 枠からはみ出た部分をスクロールできるようにする */
+    border: 1px solid #ddd;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    margin: 10px auto 30px auto;
+    cursor: grab; /* ドラッグ操作が可能なことを示すカーソル */
+    background-color: #f8f8f8;
 }
+
+/* 路線図画像のスタイルを修正 */
+.rosenzu-img {
+    /* 🚨 既存の設定を修正・上書き */
+    width: 100%; /* 初期表示はコンテナの幅に合わせる */
+    height: auto; 
+    display: block; 
+    margin: 0; /* 親要素の自動マージンをリセット */
+    
+    /* 拡大・縮小とドラッグ移動の基盤 */
+    transform-origin: 0 0; /* 拡大の起点を左上にする */
+    transition: transform 0.2s ease-out; /* 拡大縮小を滑らかにする */
+    user-select: none; /* 画像をドラッグしてもテキスト選択が起こらないようにする */
+    cursor: grab; /* ドラッグ操作が可能なことを示すカーソル */
+}
+
 
 /* -------------------------------------- */
 /* 鉄道各社のボタンエリア */
 /* -------------------------------------- */
 
 .company-buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr; 
-    gap: 15px; 
-    padding: 10px 0;
-    overflow-x: hidden; /* 🚨 追加 */
-
-    
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 15px; 
+    padding: 10px 0;
+    overflow-x: hidden; /* 🚨 追加 */
 }
+
+/* -------------------------------------- */
+/* 🚨 災害情報セクションのボタン配置 (追加・変更箇所) */
+/* -------------------------------------- */
+
+/* #saigaiセクションの直下の要素（ボタンリンク）を2列グリッドにする */
 #saigai {
-    /* 既存の #saigai の設定を上書き */
-    display: grid; 
-    grid-template-columns: 1fr 1fr; /* PCでは2列均等幅 */
-    gap: 15px; /* ボタン間の間隔 */
-    padding: 10px; /* 既存のpaddingを維持 */
-    margin: 20px 0; /* 既存のmarginを維持 */
-    background-color: #f9f9f9; /* 既存の背景色を維持 */
-    overflow-x: hidden;
+    /* 既存の #saigai の設定を上書き */
+    display: grid; 
+    grid-template-columns: 1fr 1fr; /* PCでは2列均等幅 */
+    gap: 15px; /* ボタン間の間隔 */
+    padding: 10px; /* 既存のpaddingを維持 */
+    margin: 20px 0; /* 既存のmarginを維持 */
+    background-color: #f9f9f9; /* 既存の背景色を維持 */
+    overflow-x: hidden;
 }
-.company-button {
-    display: block; 
-    text-decoration: none;
-    
-    border-radius: 6px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
 
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-top: 50%;
-    
-    background-size: cover; 
-    background-position: center; 
-    
-    transition: transform 0.2s;
+.company-button {
+    display: block; 
+    text-decoration: none;
+    
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: 50%;
+    
+    background-size: cover; 
+    background-position: center; 
+    
+    transition: transform 0.2s;
 }
 
 .company-button:hover {
-    transform: translateY(-2px);
+    transform: translateY(-2px);
 }
 
 .company-button span {
-    position: absolute;
-    top: 50%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-    
-    color: white; 
-    font-weight: bold;
-    font-size: 1.8em; 
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
-    text-align: center;
-    width: 90%;
-    line-height: 1.2;
-    z-index: 10;
-    overflow-wrap: break-word; 
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    
+    color: white; 
+    font-weight: bold;
+    font-size: 1.8em; 
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+    text-align: center;
+    width: 90%;
+    line-height: 1.2;
+    z-index: 10;
+    overflow-wrap: break-word; 
 }
 
 /* 京都市営地下鉄のフォントサイズ調整（長い名称のため） */
 .company-buttons a:nth-child(8) span {
-    font-size: 2.0em; 
+    font-size: 2.0em; 
 }
 .company-buttons a:nth-child(9) span {
-    font-size: 1.7em; 
+    font-size: 1.7em; 
 }
 
 
@@ -439,42 +468,42 @@ main > div[style] {
 /* -------------------------------------- */
 
 .site-footer {
-    background-color: #0056b3;
-    color: white;
-    padding: 15px 10px;
-    text-align: center;
-    width: 100%;
-    overflow-x: hidden; /* 🚨 追加 */
+    background-color: #0056b3;
+    color: white;
+    padding: 15px 10px;
+    text-align: center;
+    width: 100%;
+    overflow-x: hidden; /* 🚨 追加 */
 }
 
 .footer-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    max-width: 1200px;
-    margin: 0 auto;
-    overflow-x: hidden; /* 🚨 追加 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow-x: hidden; /* 🚨 追加 */
 }
 
 .footer-link {
-    color: white;
-    text-decoration: none;
-    font-size: 1.1em;
-    font-weight: bold;
-    padding: 8px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    width: 100%;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    width: 100%;
 }
 
 .footer-link:hover {
-    background-color: #003d7a;
+    background-color: #003d7a;
 }
 
 .copyright {
-    margin-top: 15px;
-    font-size: 0.8em;
+    margin-top: 15px;
+    font-size: 0.8em;
 }
 
 /* -------------------------------------- */
@@ -482,26 +511,26 @@ main > div[style] {
 /* -------------------------------------- */
 
 @media (min-width: 768px) {
-    
-    .menu-toggle {
-        display: none;
-    }
-    
-    .main-nav {
-        margin-left: auto;
-    }
-    
-    #menu-links {
-        display: flex !important; 
-        flex-direction: row; 
-        position: static;
-        margin-left: auto; 
-        width: auto;
-    }
+    
+    .menu-toggle {
+        display: none;
+    }
+    
+    .main-nav {
+        margin-left: auto;
+    }
+    
+    #menu-links {
+        display: flex !important; 
+        flex-direction: row; 
+        position: static;
+        margin-left: auto; 
+        width: auto;
+    }
 
-    #menu-links li {
-        border-top: none; 
-    }
+    #menu-links li {
+        border-top: none; 
+    }
 }
 
 /* -------------------------------------- */
@@ -509,114 +538,123 @@ main > div[style] {
 /* -------------------------------------- */
 
 @media (max-width: 767px) {
-    
-    /* 🚨 修正1: ヘッダーから左右のパディングを完全に削除 */
-    .site-header {
-        padding: 10px 0; 
-        padding-bottom: 0;
+    
+    /* 🚨 修正1: ヘッダーから左右のパディングを完全に削除 */
+    .site-header {
+        padding: 10px 0; 
+        padding-bottom: 0;
+    }
+
+    .header-container {
+        display: block; 
+        max-width: 100%;
+        padding: 0 10px; 
+        margin: 0; 
+    }
+    
+    .site-logo {
+        padding: 5px 0 10px;
+    }
+
+    .main-nav {
+        width: 100%;
+        margin-left: 0;
+        padding-top: 10px;
+        background-color: #003d7a;
+    }
+    
+    /* 🚨 2列グリッドで表示 */
+    #menu-links {
+        display: grid !important; 
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        position: static;
+        width: 100%;
+    }
+    
+    #menu-links li {
+        border-top: none; 
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
+    }
+    
+    #menu-links li:nth-child(even) {
+        border-left: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    /* 最後の2つの要素（最後の行）の下線は削除 */
+    #menu-links li:nth-last-child(-n+2) {
+        border-bottom: none;
+    }
+
+
+    #menu-links li a {
+        margin: 0;
+        border-radius: 0;
+        text-align: center;
+        padding: 15px 10px;
+        font-size: 1.0em;
+        background-color: transparent;
+    }
+    
+    /* 🚨 修正2: mainコンテンツのパディングを調整 */
+    main {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    /* 🚨 修正3: summary-cardの最小幅をリセット */
+    .summary-card {
+        min-width: unset; 
+        flex: 1 1 100%; 
+    }
+    .summary-area {
+        justify-content: center;
+    }
+
+    /* 🚨 修正4: 路線図画像の100%強制を解除（新しい設定に任せる） */
+    /* .rosenzu-img {
+        max-width: 100%; 
+    } */
+    /* スマホ向けにmap-containerの高さを調整 */
+    .map-container {
+        height: 300px;
     }
 
-    .header-container {
-        display: block; 
-        max-width: 100%;
-        padding: 0 10px; 
-        margin: 0; 
-    }
-    
-    .site-logo {
-        padding: 5px 0 10px;
-    }
+    /* その他スマホ向けのスタイル */
+    .footer-container {
+        flex-direction: row;
+        justify-content: center;
+        gap: 30px;
+    }
 
-    .main-nav {
-        width: 100%;
-        margin-left: 0;
-        padding-top: 10px;
-        background-color: #003d7a;
-    }
-    
-    /* 🚨 2列グリッドで表示 */
-    #menu-links {
-        display: grid !important; 
-        grid-template-columns: 1fr 1fr;
-        gap: 0;
-        position: static;
-        width: 100%;
-    }
-    
-    #menu-links li {
-        border-top: none; 
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
-    }
-    
-    #menu-links li:nth-child(even) {
-        border-left: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    
-    /* 最後の2つの要素（最後の行）の下線は削除 */
-    #menu-links li:nth-last-child(-n+2) {
-        border-bottom: none;
-    }
+    .footer-link {
+        font-size: 1.2em;
+        width: auto;
+    }
+    
+    /* 運行情報ボタンはスマホで1列に */
+    .company-buttons {
+        grid-template-columns: 1fr; 
+    }
 
-
-    #menu-links li a {
-        margin: 0;
-        border-radius: 0;
-        text-align: center;
-        padding: 15px 10px;
-        font-size: 1.0em;
-        background-color: transparent;
-    }
-    
-    /* 🚨 修正2: mainコンテンツのパディングを調整 */
-    main {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
-    /* 🚨 修正3: summary-cardの最小幅をリセット */
-    .summary-card {
-        min-width: unset; 
-        flex: 1 1 100%; 
-    }
-    .summary-area {
-        justify-content: center;
-    }
-
-    /* 🚨 修正4: 路線図画像を100%に強制 */
-    .rosenzu-img {
-        max-width: 100%; 
-    }
-
-    /* その他スマホ向けのスタイル */
-    .footer-container {
-        flex-direction: row;
-        justify-content: center;
-        gap: 30px;
-    }
-
-    .footer-link {
-        font-size: 1.2em;
-        width: auto;
-    }
-
-    .company-buttons {
-        grid-template-columns: 1fr; 
-    }
-    
-    .company-button {
-        padding-top: 33.3%; 
-    }
-    
-    /* スマホでのフォントサイズ調整 */
-    .company-button span {
-        font-size: 1.5em; 
-    }
-    /* スマホでの京都市営地下鉄のフォントサイズ調整 */
-    .company-buttons a:nth-child(8) span {
-        font-size: 1.6em;
-    }
-    .company-buttons a:nth-child(9) span {
-        font-size: 1.6em;
-    }
+    /* 🚨 災害情報ボタンもスマホで1列に */
+    #saigai {
+        grid-template-columns: 1fr; 
+    }
+    
+    .company-button {
+        padding-top: 33.3%; 
+    }
+    
+    /* スマホでのフォントサイズ調整 */
+    .company-button span {
+        font-size: 1.5em; 
+    }
+    /* スマホでの京都市営地下鉄のフォントサイズ調整 */
+    .company-buttons a:nth-child(8) span {
+        font-size: 1.6em;
+    }
+    .company-buttons a:nth-child(9) span {
+        font-size: 1.6em;
+    }
 }
-
