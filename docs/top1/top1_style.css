@@ -3,17 +3,19 @@ body {
   font-family: sans-serif;
 }
 .translate-box {
-  display: flex;              /* 横並びにする */
-  align-items: flex-start;    /* 上端を揃える */
-  justify-content: space-between;
-  margin: 20px;               /* 上下左右に余白 */
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;   /* ← 左寄せに変更 */
   margin-top: 100px;
+  width: 100%;                   /* ← 横幅を確保 */
+  position: relative;            /* ← スライダーの absolute の影響を防ぐ */
+  margin-right: 40px;
 }
-
 .translate-text {
   flex: 1;                    /* テキスト部分を広げる */
   text-align: left;           /* 左揃え */
   margin-right: 20px;         /* ボタンとの間に余白 */
+  margin-left: 20px;          /* 左側にも余白 */
 }
 
 .translate-text p {
