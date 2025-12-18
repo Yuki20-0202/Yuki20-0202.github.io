@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Results</title>
+  <link rel="stylesheet" href="/assets/common.css">
+  <link rel="stylesheet" href="/search/search.css">
+</head>
+<body>
+  <div id="common-header"></div>
+  <script>
+    fetch("/assets/header.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("common-header").innerHTML = html;
+      });
+  </script>
+
+  <main>
+    <div class="search-heading-wrapper">
+      <div class="accent-bar"></div>
+      <h2 id="search-heading">Search Results</h2>
+    </div>
+    <div id="results"></div>
+  </main>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const query = params.get("query")?.trim();
+  const resultsDiv = document.getElementById("results");
+
+  if (!query) {
+    resultsDiv.innerHTML = "<p>No search term was specified.</p>";
+  } else {
+    const jsonFiles = [
+      "/search/2.json",
+      "/search/7.json",
+      "/search/20.json",
+      "/search/jobs1.json"
+    ];
+
+    Promise.all(jsonFiles.map(file => fetch(file).then(res => res.json())))
+      .then(dataArray => {
+        const allData = Array.isArray(dataArray[0]) ? dataArray.flat() : dataArray;
+
+        const filtered = allData.filter(item =>
+          item.title.includes(query) ||
+          item.description.includes(query) ||
+          item.tags.some(tag => tag.includes(query))
+        );
+
+        if (filtered.length > 0) {
+          resultsDiv.innerHTML = `<p>Search results for <span class="query-highlight">"${query}"</span>:</p>` +
+            filtered.map(item => `
+              <div class="result-item">
+                <h3><a href="${item.url}">${item.title}</a></h3>
+                <p>${item.description}</p>
+              </div>
+            `).join("");
+        } else {
+          resultsDiv.innerHTML = `<p>No results found for "${query}".</p>`;
+        }
+      })
+      .catch(err => {
+        console.error("Failed to load search data", err);
+        resultsDiv.innerHTML = "<p>Failed to load search data.</p>";
+      });
+  }
+</script>
+
+  <div id="common-footer"></div>
+  <script>
+    fetch("/assets/footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("common-footer").innerHTML = html;
+      });
+  </script>
+  <script src="/assets/search.js" defer></script>
+  <script src="/assets/common.js" defer></script>
+</body>
+</html>
