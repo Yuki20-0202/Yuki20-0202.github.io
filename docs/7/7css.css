@@ -95,6 +95,38 @@ body {
 #menu-links a:hover {
     background-color: #003d7a;
 }
+/* 言語切り替えボタンのスタイル */
+.lang-switch {
+    display: flex;
+    align-items: center;
+    margin-left: 15px; /* ロゴとの間隔 */
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.lang-switch a {
+    color: #ffffff;
+    text-decoration: none;
+    opacity: 0.7; /* リンク側は少し薄くする */
+    transition: opacity 0.3s;
+}
+
+.lang-switch a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.lang-switch .current-lang {
+    color: #ffcc00; /* 現在の言語を強調（黄色など） */
+}
+
+.lang-switch .separator {
+    color: white;
+    margin: 0 5px;
+    font-weight: normal;
+}
+
+
 
 /* -------------------------------------- */
 /* メインコンテンツのスタイル */
@@ -107,15 +139,6 @@ main {
     min-height: 80vh; 
     overflow-x: hidden; /* mainの横スクロールを局所的に禁止 */
     width: 100%; 
-}
-
-/* 🚨 開発用ボタンのdivを修正 */
-main > div[style] {
-    margin-bottom: 20px; 
-    padding: 10px; 
-    border: 1px solid #ccc;
-    width: 100%;
-    overflow-x: hidden; /* 内部のボタンによるはみ出しを防ぐ */
 }
 
 .summary-area {
@@ -146,197 +169,6 @@ main > div[style] {
     background-color: #ffffff; 
     border-color: #dc3545;
 }
-
-
-/* -------------------------------------- */
-/* 運行状態表示エリアのスタイル */
-/* -------------------------------------- */
-
-#runko-status {
-    position: relative; 
-    min-height: 80px;
-    overflow: hidden; 
-    padding-top: 10px; 
-    padding-bottom: 25px; 
-    margin-top: 5px;
-    transition: min-height 0.3s ease-in-out;
-}
-
-.status-item {
-    display: flex; 
-    flex-direction: column; 
-    justify-content: space-between; 
-    position: absolute; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    pointer-events: none;
-    overflow-x: hidden; /* 🚨 追加 */
-}
-
-.status-item.current-status {
-    opacity: 1;
-    pointer-events: auto;
-    z-index: 2;
-}
-
-.status-content {
-    display: flex;
-    align-items: center;
-    flex-grow: 1; 
-    padding-left: 10px;
-    overflow-x: hidden; /* 🚨 追加 */
-}
-
-.status-icon {
-    width: 40px; 
-    height: 40px; 
-    margin-right: 10px;
-    flex-shrink: 0; 
-    max-width: 100%; 
-    height: auto; 
-}
-
-.status-text {
-    font-size: 1.9em; 
-    font-weight: bold;
-    margin: 0;
-    color: #333; 
-    flex-shrink: 1; 
-    line-height: 1.2; 
-    overflow-wrap: break-word; 
-    width: 100%; 
-}
-
-/* 運行情報側の .detail-link のスタイル */
-.status-item .detail-link { 
-    display: block; 
-    text-align: right;
-    margin-top: 5px; 
-    font-size: 0.9em;
-    color: #0056b3;
-    text-decoration: underline;
-    transition: color 0.2s;
-    flex-shrink: 0; 
-    padding-bottom: 5px; 
-    padding-right: 10px; 
-    position: absolute;
-    bottom: 0;
-    right: 0;
-}
-
-.status-item .detail-link:hover {
-    color: #003d7a;
-}
-
-#status-normal .status-text {
-    color: #28a745; 
-}
-#status-delay .status-text {
-    color: #ffc107; 
-}
-#status-stop .status-text {
-    color: #dc3545; 
-}
-
-/* -------------------------------------- */
-/* 災害状態表示エリアのスタイル */
-/* -------------------------------------- */
-
-#saigai-status {
-    position: relative; 
-    min-height: 80px; 
-    overflow: hidden; 
-    
-    padding-top: 10px; 
-    padding-bottom: 25px; 
-    margin-top: 5px;
-    transition: min-height 0.3s ease-in-out; 
-}
-
-.saigai-item {
-    display: flex; 
-    flex-direction: column; 
-    justify-content: space-between;
-    position: absolute; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; 
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    pointer-events: none;
-    overflow-x: hidden; /* 🚨 追加 */
-}
-
-.saigai-item.current-saigai {
-    opacity: 1; 
-    pointer-events: auto;
-    z-index: 2; 
-}
-
-.saigai-content {
-    display: flex;
-    align-items: center;
-    flex-grow: 1; 
-    padding-left: 10px;
-    overflow-x: hidden; /* 🚨 追加 */
-}
-
-.saigai-icon {
-    width: 40px; 
-    height: 40px; 
-    margin-right: 10px;
-    flex-shrink: 0; 
-    max-width: 100%; 
-    height: auto; 
-}
-
-.saigai-text {
-    font-size: 1.9em; 
-    font-weight: bold;
-    margin: 0;
-    color: #333; 
-    flex-shrink: 1; 
-    line-height: 1.2;
-    overflow-wrap: break-word;
-    width: 100%; 
-}
-
-.saigai-item .detail-link { 
-    display: block; 
-    text-align: right;
-    margin-top: 5px; 
-    font-size: 0.9em;
-    color: #0056b3;
-    text-decoration: underline;
-    transition: color 0.2s;
-    flex-shrink: 0; 
-    padding-bottom: 5px; 
-    padding-right: 10px;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-}
-
-.saigai-item .detail-link:hover {
-    color: #003d7a;
-}
-
-#saigai-normal .saigai-text {
-    color: #28a745; 
-}
-#saigai-warning .saigai-text {
-    color: #ffc107; 
-}
-.saigai-emergency .saigai-text {
-    color: #dc3545; 
-    font-weight: 900; 
-}
-
 
 /* メインコンテンツ内の各セクションのスタイル */
 #runko, #saigai, #news, #help {
@@ -514,24 +346,28 @@ main > div[style] {
 /* -------------------------------------- */
 
 @media (max-width: 767px) {
-    
     /* 🚨 修正1: ヘッダーから左右のパディングを完全に削除 */
     .site-header {
         padding: 10px 0; 
         padding-bottom: 0;
     }
-
     .header-container {
         display: block; 
         max-width: 100%;
         padding: 0 10px; 
         margin: 0; 
+	display: flex; /* スマホでも横並びを維持 */
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
-    
+　.lang-switch {
+        margin-left: auto; /* ロゴとメニューボタンの間に配置 */
+        margin-right: 15px;
+        padding-top: 5px;
+    }
     .site-logo {
         padding: 5px 0 10px;
     }
-
     .main-nav {
         width: 100%;
         margin-left: 0;
