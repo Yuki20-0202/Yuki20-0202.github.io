@@ -15,7 +15,6 @@ body {
     padding: 0;
     background-color: var(--color-washi); 
     color: var(--color-text-dark);
-    padding-top: 80px; 
 }
 
 main {
@@ -24,181 +23,119 @@ main {
     padding: 0 15px;
 }
 
-/* ヘッダー */
-.headertitle {
-    background-color: var(--color-deep-red); /* 深紅のヘッダー */
-    color: white;
-    padding: 25px 20px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 12px;   /* 角を丸くする */
-    margin-bottom: 30px;   /* 下の「言語選択」と距離を取る */
-}
-
-.headertitle h1 {
-    margin: 0;
-    font-size: 2em;
-    letter-spacing: 2px; /* 少し間隔を空けて和の雰囲気を出す */
-}
-
-
-
-/* セクションと見出し */
+/* セクションと区切り線 */
 section {
-    background-color: white;
-    padding: 25px;
-    margin-bottom: 25px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* 影で立体感 */
-}
-
-h2 {
-    color: var(--color-deep-red); 
-    border-bottom: 3px solid var(--color-maple); /* 紅葉色の太い下線 */
-    padding-bottom: 10px;
-    margin-top: 0;
-    font-size: 1.5em;
-}
-
-h3 {
-    color: var(--color-deep-red); 
-    border-left: 5px solid var(--color-maple); 
-    padding-left: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    border: 1px solid var(--color-line);
+    border-radius: 8px;
+    background-color: #ffffff; /* 白い背景 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 hr {
     border: none;
-    height: 1px;
-    background: repeating-linear-gradient(90deg, var(--color-line), var(--color-line) 5px, transparent 5px, transparent 10px); /* 破線で和風の区切りを表現 */
-    margin: 30px 0;
+    border-top: 1px dashed var(--color-line);
+    margin: 20px 0;
 }
 
-/* フォーム要素 */
-label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: var(--color-text-dark);
-}
-
-select, input[type="text"], textarea {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid var(--color-line);
-    border-radius: 6px;
-    font-size: 1em;
-    width: 100%;
-    box-sizing: border-box;
-    background-color: #ffffff;
-    transition: border-color 0.3s;
-}
-
-select:focus, input[type="text"]:focus, textarea:focus {
-    border-color: var(--color-maple);
-    box-shadow: 0 0 5px rgba(233, 113, 37, 0.5); /* 紅葉色のフォーカス */
-}
-
-/* 翻訳セクション */
-.input-area {
-    gap: 15px;
-}
-
-#translation button, #add-custom-word-button {
-    background-color: var(--color-maple); /* 紅葉色のボタン */
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1.1em;
-    font-weight: bold;
-    transition: background-color 0.3s;
-    width: 100%;
-    margin-top: 5px;
-}
-
-#translation button:hover, #add-custom-word-button:hover {
-    background-color: #d8621a; /* 少し濃い紅葉色 */
-}
-
-.note {
-    font-size: 0.85em;
-    color: var(--color-sub-text);
-    margin-top: 15px;
-}
-
-/* 日常会話の読み上げセクション */
-#phrases-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.phrase-button {
-    background-color: #fff8e1; /* 淡い黄色（和紙のイメージ） */
-    color: var(--color-deep-red); 
-    border: 1px solid var(--color-deep-red);
-    padding: 15px;
-    border-radius: 8px; /* 角を少し丸く */
-    cursor: pointer;
-    font-size: 1.1em;
-    font-weight: bold;
-    flex-grow: 1;
-    min-width: 150px;
-    text-align: center;
-    box-shadow: 2px 2px 0 rgba(139, 0, 0, 0.4); /* 控えめな立体感 */
-    transition: background-color 0.2s, transform 0.1s;
-}
-
-.phrase-button:hover {
-    background-color: #ffefc4;
-}
-
-.phrase-button:active {
-    transform: translate(2px, 2px); /* 影の沈み込み */
-    box-shadow: none;
-}
-
-/* 日本語学習セクション */
-#custom-word-input {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-bottom: 15px;
-    gap: 10px;
-}
-
-#custom-word-input label {
-    margin-right: 5px;
-    white-space: nowrap;
-    width: auto; /* ラベルの幅を自動調整 */
-}
-
-#custom-word-input input {
-    flex-grow: 1;
-    max-width: 150px;
-    margin-bottom: 0;
-}
-
-#custom-word-input button {
-    flex-grow: 1;
-    min-width: 100px;
+h2, h3 {
+    color: var(--color-deep-red);
+    border-bottom: 2px solid var(--color-maple);
+    padding-bottom: 5px;
     margin-top: 0;
 }
 
-#words-container, #custom-words-container {
+/* フォーム要素 */
+select, textarea, input[type="text"] {
+    padding: 12px;
+    margin: 5px 0 15px 0;
+    border: 1px solid var(--color-line);
+    border-radius: 5px;
+    box-sizing: border-box; /* paddingを含めた幅の計算 */
+}
+
+textarea {
+    width: 100%;
+    min-height: 100px;
+    resize: vertical;
+}
+
+button {
+    background-color: var(--color-maple);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+button:hover {
+    background-color: #d85c17; /* 濃い紅葉色 */
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* リアルタイム翻訳ボタンのグループ化 */
+.translation-buttons-group {
+    display: flex;
+    flex-direction: row; 
+    gap: 10px; 
+    margin-top: 10px;
+    width: 100%; /* 親要素の幅いっぱいに広げる */
+}
+.translation-buttons-group button {
+     flex: 1; /* 3つのボタンを均等に配置 */
+     margin: 0;
+     white-space: nowrap; /* ボタンテキストの折り返しを防ぐ */
+}
+
+/* インプットエリアのフレックス配置を統一 */
+.input-area { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-start; 
+}
+
+
+/* 会話フレーズボタン */
+#phrases-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 15px;
+}
+
+#phrases-container button {
+    display: block; 
+    width: 100%; 
+    text-align: left; 
+    margin-bottom: 5px; 
+    background-color: #f0f0f0; /* 薄い灰色 */
+    color: var(--color-text-dark);
+    border: 1px solid #ddd;
+}
+
+#phrases-container button:hover {
+    background-color: #e6e6e6;
+}
+
+/* 日本語学習カード */
+#words-container, #custom-words-container {
     margin-top: 15px;
 }
 
 .word-card {
-    background-color: #f7e7e7; /* 薄い赤（桜色に近い） */
-    border: 1px solid var(--color-line); 
-    border-left: 8px solid var(--color-deep-red); /* 深紅のアクセントライン */
+    border: 1px solid #ffcccc; /* 薄い赤系の枠 */
     padding: 15px;
+    margin: 10px 0;
     border-radius: 8px;
+    background-color: #fffafa; /* わずかに赤い背景 */
     cursor: pointer;
     font-size: 1em;
     transition: background-color 0.2s;
@@ -227,6 +164,46 @@ select:focus, input[type="text"]:focus, textarea:focus {
     margin-left: 10px;
 }
 
+/* カスタム単語入力のためのスタイル */
+#custom-word-input input { 
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid var(--color-line);
+    border-radius: 3px;
+    width: 150px;
+}
+#custom-word-input { 
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap; 
+    border: 1px dashed #42a5f5; /* 水色の点線で強調 */
+    padding: 10px;
+    border-radius: 5px;
+}
+#custom-word-input label { 
+    margin-right: 5px;
+    white-space: nowrap;
+    margin-bottom: 5px;
+}
+#custom-word-input button { 
+    margin: 5px 0;
+    background-color: #4CAF50; /* 緑系のボタン色 */
+    color: white;
+    border: none;
+}
+/* ローディングテキストのスタイルは既に定義済み */
+
+/* 音声認識中のスタイル */
+.recording {
+    background-color: #ff5722; /* マイクボタンを赤くする */
+    animation: pulse 1s infinite alternate;
+}
+@keyframes pulse {
+    from { opacity: 1; }
+    to { opacity: 0.7; }
+}
+
 /* フッター */
 footer {
     text-align: center;
@@ -239,37 +216,35 @@ footer {
 }
 
 /* スマートフォン対応 */
-@media (max-width: 650px) {
+@media (max-width: 600px) {
     main {
+        margin: 10px auto;
         padding: 0 10px;
     }
 
-    #phrases-container {
-        flex-direction: column; /* スマホでは縦に並べる */
+    h2 {
+        font-size: 1.4em;
     }
 
-    .phrase-button {
-        min-width: 100%;
-        text-align: left;
+    /* リアルタイム翻訳ボタンのグループ化を縦に */
+    .translation-buttons-group {
+        flex-direction: column;
     }
-    
+    .translation-buttons-group button {
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    /* カスタム単語入力フォームの調整 */
     #custom-word-input {
         flex-direction: column;
         align-items: stretch;
     }
-
-    #custom-word-input input, #custom-word-input button {
-        max-width: 100%;
+    #custom-word-input label, #custom-word-input input {
         width: 100%;
         margin-right: 0;
     }
-    
-    #custom-word-input label {
-        margin-bottom: 0;
-        margin-top: 5px;
-    }
-    
-    #words-container, #custom-words-container {
-        grid-template-columns: 1fr; /* 1列にする */
+    #custom-word-input button {
+        width: 100%;
     }
 }
