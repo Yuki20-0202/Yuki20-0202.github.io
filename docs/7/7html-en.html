@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kyoto Area: Train Status & Disaster Info</title>
+    <link rel="stylesheet" href="7html-en.css">
+    <link rel="stylesheet" href="../assets/common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<div id="common-header"></div>
+<script>
+  // Note: Ensure that header.html also has an English version if needed
+  fetch("../assets/header.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("common-header").innerHTML = html;
+    });
+</script>
+
+    <div class="site-header">
+        <div class="header-container">
+            <div class="site-logo"><a href="#">Information Portal TOP</a></div>
+	　<div class="lang-switch">
+   		 <a href="7html.html" class="other-lang">JP</a>
+   		 <span class="separator">|</span>
+    		<span class="current-lang">EN</span>
+	　</div>
+            <button class="menu-toggle" aria-label="Open/Close menu" 
+                    aria-controls="menu-links" aria-expanded="false" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav class="main-nav">
+                <ul id="menu-links">
+                    <li><a href="#runko">Train Status</a></li>
+                    <li><a href="#saigai">Disaster Info</a></li>
+                    <li><a href="#news">News</a></li>
+                    <li><a href="#help">Help</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <main>
+        <h1>Kyoto Transport & Disaster Information</h1>
+        <p>Welcome to the Kyoto Transport & Disaster Information Site!<br>
+        This portal provides links to various public transportation operators in Kyoto, disaster hazard maps, and real-time river level information. We also provide guides on how to use local buses and trains.<br>
+        This site is part of a research project by students from Osaka Metropolitan University College of Technology. We appreciate your feedback to help improve our future research.</p>
+        
+        <div id="runko">
+            <h2>Kyoto Railway Network Map</h2>
+            <img src="kyotorosenzu.jpg" alt="Railway Map" class="rosenzu-img">
+            <h3>Railway Service Information</h3>
+            <div class="company-buttons">
+                <a href="https://www.jr-odekake.net/en/" class="company-button" style="background-image: url('JR西日本.jpg');"><span>JR West</span></a>
+                <a href="https://global.jr-central.co.jp/en/" class="company-button" style="background-image: url('JR東海.jpg');"><span>JR Central</span></a>
+                
+                <a href="https://www.hankyu.co.jp/global/en/" class="company-button" style="background-image: url('阪急電鉄.jpg');"><span>Hankyu Railway</span></a>
+                <a href="https://www.kintetsu.co.jp/foreign/english/" class="company-button" style="background-image: url('近鉄.jpg');"><span>Kintetsu Railway</span></a>
+                
+                <a href="https://www.keihan.co.jp/en/" class="company-button" style="background-image: url('京阪電鉄.jpg');"><span>Keihan Railway</span></a>
+                <a href="https://eizandensha.co.jp/en/" class="company-button" style="background-image: url('叡山電鉄.jpg');"><span>Eizan Railway</span></a>
+                
+                <a href="https://www.keifuku.co.jp/en/" class="company-button" style="background-image: url('京福電鉄.jpg');"><span>Keifuku (Randen)</span></a>
+                <a href="https://www.city.kyoto.lg.jp/kotsu/index.html" class="company-button" style="background-image: url('京都市営地下鉄.jpg');"><span>Kyoto City Subway</span></a>
+            </div>
+        </div>
+        
+        <div id="saigai">
+            <a href="https://gis.chisuibousai.pref.kyoto.jp/Index" class="company-button" style="background-image: url('kamogawa.jpg');"><span>Kyoto River Disaster Map</span></a>
+            <a href="https://www.bousai.city.kyoto.lg.jp/bousai/hazardmap/flow_01.html" class="company-button" style="background-image: url('bosaimap.jpg');"><span>Kyoto City Hazard Map</span></a>
+        </div>
+        <div id="news">News Section</div>
+        <div id="help">Help Section</div>
+    </main>
+
+    <div class="site-footer">
+        <div class="footer-container">
+            <a href="#" class="footer-link">Train Status</a>
+            <a href="#" class="footer-link">Disaster Info (Kyoto)</a>
+        </div>
+    </div>
+
+<div id="common-footer"></div>
+<script>
+  fetch("../assets/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("common-footer").innerHTML = html;
+    });
+</script>
+<script src="../assets/common.js" defer></script>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu-links');
+            const toggleButton = document.querySelector('.menu-toggle');
+            
+            menu.classList.toggle('is-open');
+
+            const isExpanded = menu.classList.contains('is-open');
+            toggleButton.setAttribute('aria-expanded', isExpanded);
+        }
+    </script>
+    <script src="7js.js"></script>
+</body>
+</html>
