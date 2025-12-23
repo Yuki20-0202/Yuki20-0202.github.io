@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京都観光ガイド</title>
+    <link rel="stylesheet" href="20.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="kankou-guide">
+
+    <header1>
+        <div class="header-inner">
+            <h1 class="site-title">京都観光ガイド</h1>
+            <div class="header-nav">
+                <a href="20.html" class="header-btn">文化TOP</a>
+                <a href="#" class="header-btn">English</a>
+            </div>
+        </div>
+    </header1>
+
+    <main>
+        <div class="filter-container">
+            <div class="select-wrapper">
+                <label for="genre-select"><i class="fa-solid fa-filter"></i> ジャンルで絞り込む：</label>
+                <select id="genre-select" onchange="filterSpots(this.value)">
+                    <option value="all">すべて表示</option>
+                    <option value="shrine">神社・お寺</option>
+                    <option value="cafe">カフェ・グルメ</option>
+                    </select>
+                <h1>まだ実装できていません</h1>    
+            </div>
+        </div>
+
+        <div class="spot-list-container">
+
+            <article class="spot-card" data-category="shrine">
+                <div class="spot-image">
+                    <span>（清水寺の写真）</span>
+                </div>
+                <div class="spot-content">
+                    <div class="tag-area">
+                        <span class="tag tag-shrine">#神社</span>
+                        <span class="tag tag-view">#絶景</span>
+                    </div>
+                    <h2 class="spot-title">清水寺</h2>
+                    <p class="summary-text">「清水の舞台」で知られる、京都を代表する寺院。</p>
+                    
+                    <div class="more-info">
+                        <div class="info-inner">
+                            <p>四季折々の景色が楽しめます。特に秋の紅葉は圧巻です。</p>
+                            <dl class="info-list">
+                                <dt>住所</dt><dd>京都市東山区清水1丁目294</dd>
+                                <dt>拝観時間</dt><dd>6:00 ～ 18:00</dd>
+                            </dl>
+                            <a href="#" class="map-link"><i class="fa-solid fa-map-location-dot"></i> 地図を見る</a>
+                        </div>
+                    </div>
+
+                    <button class="detail-btn" onclick="toggleDetail(this)">詳しく見る <i class="fa-solid fa-chevron-down"></i></button>
+                </div>
+            </article>
+
+            <article class="spot-card" data-category="cafe">
+                <div class="spot-image">
+                    <span>（抹茶パフェの写真）</span>
+                </div>
+                <div class="spot-content">
+                    <div class="tag-area">
+                        <span class="tag tag-cafe">#カフェ</span>
+                        <span class="tag tag-sweet">#スイーツ</span>
+                    </div>
+                    <h2 class="spot-title">祇園 辻利</h2>
+                    <p class="summary-text">宇治抹茶を贅沢に使ったスイーツが楽しめる老舗店。</p>
+                    
+                    <div class="more-info">
+                        <div class="info-inner">
+                            <p>濃厚な抹茶ソフトやパフェが大人気。お土産も充実しています。</p>
+                            <dl class="info-list">
+                                <dt>住所</dt><dd>京都市東山区祇園町南側573-3</dd>
+                                <dt>営業時間</dt><dd>10:00 ～ 21:00</dd>
+                            </dl>
+                            <a href="#" class="map-link"><i class="fa-solid fa-map-location-dot"></i> 地図を見る</a>
+                        </div>
+                    </div>
+
+                    <button class="detail-btn" onclick="toggleDetail(this)">詳しく見る <i class="fa-solid fa-chevron-down"></i></button>
+                </div>
+            </article>
+
+            <article class="spot-card" data-category="shrine">
+                <div class="spot-image">
+                    <span>（金閣寺の写真）</span>
+                </div>
+                <div class="spot-content">
+                    <div class="tag-area">
+                        <span class="tag tag-shrine">#神社</span>
+                        <span class="tag tag-world">#世界遺産</span>
+                    </div>
+                    <h2 class="spot-title">金閣寺</h2>
+                    <p class="summary-text">黄金に輝く舎利殿が美しい、世界遺産の寺院。</p>
+                    
+                    <div class="more-info">
+                        <div class="info-inner">
+                            <p>池に映る「逆さ金閣」は必見。雪の日の景色も格別です。</p>
+                            <dl class="info-list">
+                                <dt>住所</dt><dd>京都市北区金閣寺町1</dd>
+                                <dt>拝観時間</dt><dd>9:00 ～ 17:00</dd>
+                            </dl>
+                            <a href="#" class="map-link"><i class="fa-solid fa-map-location-dot"></i> 地図を見る</a>
+                        </div>
+                    </div>
+
+                    <button class="detail-btn" onclick="toggleDetail(this)">詳しく見る <i class="fa-solid fa-chevron-down"></i></button>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 京都観光ガイド</p>
+    </footer>
+
+    <script src="kyoto-script.js"></script>
+</body>
+</html>
