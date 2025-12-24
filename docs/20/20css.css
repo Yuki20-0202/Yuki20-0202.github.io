@@ -29,6 +29,7 @@ header1 {
     top: 0;
     z-index: 100;
     box-sizing: border-box; /* 枠線や余白を含めたサイズ計算にする */
+    margin-top: 80px;
 }
 
 /* 観光ガイドページのヘッダー色 */
@@ -1542,3 +1543,4 @@ footer {
         padding: 1.5rem;
     }
 }
+
