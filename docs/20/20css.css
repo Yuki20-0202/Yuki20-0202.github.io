@@ -10,7 +10,10 @@ body {
     line-height: 1.6;
     scroll-behavior: smooth; /* スムーズスクロール */
 }
-
+:root {
+    --header-height: 70px; /* header1 の高さに合わせる（必要に応じて調整） */
+    --header-gap: 10px;    /* ヘッダーとコンテンツの余白（見た目用） */
+}
 /* --- ヘッダー（共通） --- */
 /* --- ヘッダー（共通） --- */
 header1 {
@@ -1544,5 +1547,6 @@ footer {
         padding: 1.5rem;
     }
 }
+
 
 
