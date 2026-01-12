@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京都市エリア　列車運行・災害情報</title>
+    <link rel="stylesheet" href="7css.css">
+    <link rel="stylesheet" href="../assets/common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<div id="common-header"></div>
+<script>
+  fetch("../assets/header.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("common-header").innerHTML = html;
+    });
+</script>
+    <div class="site-header">
+        <div class="header-container">
+            <div class="site-logo"><a href="#">情報サイトTOP</a></div>
+	　<div class="lang-switch">
+    		<span class="current-lang">JP</span>
+   		 <span class="separator">|</span>
+   		 <a href="7html-en.html" class="other-lang">EN</a>
+	　</div>
+
+            <button class="menu-toggle" aria-label="メニューを開く/閉じる" 
+                    aria-controls="menu-links" aria-expanded="false" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav class="main-nav">
+                <ul id="menu-links">
+                    <li><a href="#runko">運行情報</a></li>
+                    <li><a href="#saigai">災害情報</a></li>
+                    <li><a href="#news">お知らせ</a></li>
+                    <li><a href="#help">ヘルプ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <main>
+        <h1>京都交通災害情報サイト</h1>
+	<p>京都交通災害情報サイトへようこそ！<br>このサイトでは京都市内の公共交通機関各社へのリンクをまとめたり、京都市などが公開する災害時のハザードマップやリアルタイム河川情報をまとめています。また、バスや鉄道の乗り方もまとめています。<br>このサイトは大阪公立大学工業高等専門学校の学生による研究の一環で、実際に利用していただき、皆様の意見を今後の研究に活かしていきます。</p>
+        <div id="runko">
+            <h2>京都府鉄道路線図</h2>
+            <img src="kyotorosenzu.jpg" alt="路線図" class="rosenzu-img">
+	    <h3>京都市鉄道各社運行情報</h3>
+            <div class="company-buttons">
+    <a href="https://www.jr-odekake.net/" class="company-button" style="background-image: url('JR西日本.jpg');" target="_blank" rel="noopener noreferrer"><span>JR西日本</span></a>
+    <a href="https://jr-central.co.jp/" class="company-button" style="background-image: url('JR東海.jpg');" target="_blank" rel="noopener noreferrer"><span>JR東海</span></a>
+    
+    <a href="https://www.hankyu.co.jp/" class="company-button" style="background-image: url('阪急電鉄.jpg');" target="_blank" rel="noopener noreferrer"><span>阪急電鉄</span></a>
+    <a href="https://www.kintetsu.co.jp/" class="company-button" style="background-image: url('近鉄.jpg');" target="_blank" rel="noopener noreferrer"><span>近鉄</span></a>
+    
+    <a href="https://www.keihan.co.jp/" class="company-button" style="background-image: url('京阪電鉄.jpg');" target="_blank" rel="noopener noreferrer"><span>京阪電鉄</span></a>
+    <a href="https://eizandensha.co.jp/" class="company-button" style="background-image: url('叡山電鉄.jpg');" target="_blank" rel="noopener noreferrer"><span>叡山電鉄</span></a>
+    
+    <a href="https://www.keifuku.co.jp/" class="company-button" style="background-image: url('京福電鉄.jpg');" target="_blank" rel="noopener noreferrer"><span>京福電鉄</span></a>
+    <a href="https://www.city.kyoto.lg.jp/kotsu/index.html" class="company-button" style="background-image: url('京都市営地下鉄.jpg');" target="_blank" rel="noopener noreferrer"><span>京都市営地下鉄・バス</span></a>
+</div>
+        </div>
+        
+        <div id="saigai">
+    <h2>京都市防災情報</h2>
+    <p></p>
+    <a href="https://gis.chisuibousai.pref.kyoto.jp/Index" class="company-button" style="background-image: url('kamogawa.jpg');" target="_blank" rel="noopener noreferrer"><span>京都河川防災情報マップ</span></a>
+    <a href="https://www.bousai.city.kyoto.lg.jp/bousai/hazardmap/flow_01.html" class="company-button" style="background-image: url('bosaimap.jpg');" target="_blank" rel="noopener noreferrer"><span>京都市防災情報マップ</span></a>
+</div>
+        <div id="news">
+	<h2>お知らせ</h2>
+	<article class="news-item">
+    <span class="news-date">2025.12.24</span>
+    <span class="news-category tag-about">サイトについて</span>
+    <div class="news-content">
+        <p class="news-title"><strong>当サイトの目的と特徴</strong></p>
+        <ul class="news-details">
+            <li><strong>情報の集約：</strong>京都市内の交通状況と災害情報を1つにまとめたポータルサイトです。</li>
+            <li><strong>研究プロジェクト：</strong>大阪公立大学高専の学生による、情報提供のあり方に関する研究の一環です。</li>
+            <li><strong>多言語対応：</strong>観光客や外国人の方も利用しやすいよう、AI翻訳による英語版を提供しています。</li>
+            <li><strong>迅速なアクセス：</strong>公式情報へ素早くリンクし、最新の状況を確認できるよう設計しています。</li>
+        </ul>
+    </div>
+</article>
+	</div>
+        <div id="help">
+    <h2>ヘルプ・ご利用ガイド</h2>
+    <div class="help-container">
+        <div class="help-item">
+            <h3>Q. このサイトで何ができますか？</h3>
+            <p>京都市内の各鉄道会社の運行情報や、京都府・京都市が公開している河川水位、ハザードマップに素早くアクセスできます。</p>
+        </div>
+        <div class="help-item">
+            <h3>Q. 運行情報を知りたいときは？</h3>
+            <p>「運行情報」セクションにある各鉄道会社のボタンをクリックしてください。公式のトップページが別ウィンドウで開きます。</p>
+        </div>
+        <div class="help-item">
+            <h3>Q. バスや地下鉄の乗り方がわかりません</h3>
+            <p>「京都市営地下鉄・バス」のボタンから、公式の「歩くまち京都」や「ご利用ガイド」へアクセスできます。運賃の支払い方法や乗り換え方法が詳しく解説されています。</p>
+        </div>
+        <div class="help-item">
+            <h3>Q. 研究への協力はどうすればいいですか？</h3>
+            <p>サイトを実際に利用していただき、不便な点や「もっとこうしてほしい」というご意見があれば、たびすけトップページのアンケートまでお知らせください。</p>
+        </div>
+    	</div>
+
+<div id="disclaimer">
+    <div class="disclaimer-container">
+        <h3>免責事項</h3>
+        <ul>
+            <li>本サイトは、大阪公立大学工業高等専門学校の学生による研究プロジェクトのプロトタイプです。</li>
+            <li>掲載情報の正確性、完全性、最新性については細心の注意を払っておりますが、これを保証するものではありません。</li>
+            <li>本サイトからリンクされている外部サイトの内容についても、一切の責任を負いません。</li>
+            <li>本サイトの利用により生じた直接的、または間接的な損失・損害について、当プロジェクトは一切の責任を負いかねます。</li>
+            <li>災害時には、必ず自治体や交通機関の公式発表をあわせて確認してください。</li>
+        </ul>
+    </div>
+</div>
+
+</div>
+    </main>
+
+    <div class="site-footer">
+        <div class="footer-container">
+            <a href="#" class="footer-link">列車運行情報</a>
+            <a href="#" class="footer-link">災害情報(京都エリア)</a>
+        </div>
+    </div>
+<div id="common-footer"></div>
+<script>
+  fetch("../assets/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("common-footer").innerHTML = html;
+    });
+</script>
+<script src="../assets/common.js" defer></script>
+
+    <script>
+        // ハンバーガーメニューの開閉機能
+        function toggleMenu() {
+            const menu = document.getElementById('menu-links');
+            const toggleButton = document.querySelector('.menu-toggle');
+            
+            menu.classList.toggle('is-open');
+
+            const isExpanded = menu.classList.contains('is-open');
+            toggleButton.setAttribute('aria-expanded', isExpanded);
+        }
+    </script>
+    <script src="../assets/common.js" defer></script>
+    <script src="7js.js"></script>
+</body>
+</html>

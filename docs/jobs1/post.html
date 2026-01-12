@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>求人情報の掲載</title>
+  <link rel="stylesheet" href="post.css">
+  <link rel="stylesheet" href="../assets/common.css">
+</head>
+<body>
+  <div id="common-header"></div>
+  <script>
+    fetch("../assets/header.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("common-header").innerHTML = html;
+      });
+  </script>
+<div class="translate-box">
+  <div class="translate-text">
+    <p>このページは日本語ページです。英語ページは右のボタンを押してください。</p>
+    <p>This page is in Japanese. Please click the button on the right for the English version.</p>
+  </div>
+  <button onclick="location.href='post-en.html'">🌐 English version</button>
+</div>
+  <main>
+    <h1 class="maintext">📝 求人依頼をする</h1>
+    <form class="post-request" id="job-form">
+  <!-- 地域選択 -->
+  <label for="region-area">地方<span style="color: red;">*</span></label>
+  <select id="region-area" required>
+    <option value="">選択してください</option>
+    <option value="北海道・東北">北海道・東北</option>
+    <option value="関東">関東</option>
+    <option value="中部">中部</option>
+    <option value="近畿">近畿</option>
+    <option value="中国">中国</option>
+    <option value="四国">四国</option>
+    <option value="九州・沖縄">九州・沖縄</option>
+  </select>
+
+  <label for="region-pref">都道府県<span style="color: red;">*</span></label>
+  <select id="region-pref" required>
+    <option value="">先に地方を選択してください</option>
+  </select>
+  <!-- 仕事ジャンル -->
+  <label for="job-type">仕事のジャンル<span style="color: red;">*</span></label>
+  <select id="job-type" required>
+    <option value="">選択してください</option>
+    <option value="旅館・ホテルスタッフ">旅館・ホテルスタッフ</option>
+    <option value="観光案内・受付">観光案内・受付</option>
+    <option value="お土産販売">お土産販売</option>
+    <option value="飲食店スタッフ">飲食店スタッフ</option>
+    <option value="スキー場スタッフ">スキー場スタッフ</option>
+    <option value="ガイド・体験サポート">ガイド・体験サポート</option>
+    <option value="その他">その他</option>
+  </select>
+  <label for="job-type-other" id="label-job-type-other" style="display: none;">その他の内容を入力 <span id="asterisk-job-type-other" style="color: red; display: none;">*</span></label>
+  <input type="text" id="job-type-other" placeholder="その他の内容を入力" style="display: none;">
+  <!-- 時給 -->
+  <label for="job-wage">時給目安（誤差は500円以内）<span style="color: red;">*</span></label>
+  <select id="job-wage" required>
+    <option value="">選択してください</option>
+    <option value="1000">1000円</option>
+    <option value="2000">2000円</option>
+    <option value="3000">3000円</option>
+    <option value="4000">4000円</option>
+    <option value="4000up">4000円以上</option>
+    <option value="条件付き">その他条件</option>
+  </select>
+  <label for="job-wage-other" id="label-job-wage-other" style="display: none;">その他の条件を入力 <span id="asterisk-job-wage-other" style="color: red; display: none;">*</span></label>
+  <input type="text" id="job-wage-other" placeholder="その他の条件を入力" style="display: none;">
+
+  <!-- 募集時間 -->
+  <label for="job-hours-start">募集時間<span style="color: red;">*</span></label>
+  <div class="job-hours-row" style="display:flex;align-items:center;gap:0.5rem;">
+    <select id="job-hours-start" required style="width:120px;">
+      <option value="">選択</option>
+      <!-- options will be populated by JS -->
+    </select>
+    <span class="tilde">～</span>
+    <select id="job-hours-end" required style="width:120px;">
+      <option value="">選択</option>
+      <!-- options will be populated by JS -->
+    </select>
+  </div>
+
+  <!-- 施設名 -->
+  <label for="facility">施設名・店舗名<span style="color: red;">*</span></label>
+  <input type="text" id="facility" placeholder="例：湯の里旅館" required>
+
+  <!-- 住所 -->
+  <label for="address">住所（都道府県以下）<span style="color: red;">*</span></label>
+  <input type="text" id="address" placeholder="例：松本市浅間温泉3-10-5" required>
+
+  <!-- 連絡先 -->
+  <label for="contact">連絡先（電話番号）<span style="color: red;">*</span></label>
+  <input type="text" id="contact" placeholder="例：09012345678" required>
+
+  <!-- ホームページ（任意） -->
+  <label for="website">ホームページ（任意）</label>
+  <input type="url" id="website" placeholder="例：https://example.com">
+
+  <!-- 補足コメント（任意） -->
+  <label for="description">補足コメント（任意）</label>
+  <textarea id="description" rows="4"></textarea>
+
+  <button type="submit">掲載依頼を送信</button>
+</form>
+  </main>
+
+  <div id="common-footer"></div>
+  <script>
+    fetch("../assets/footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("common-footer").innerHTML = html;
+      });
+  </script>
+  <script src="../assets/common.js" defer></script>
+  <script src="post.js" defer></script>
+</body>
+</html>

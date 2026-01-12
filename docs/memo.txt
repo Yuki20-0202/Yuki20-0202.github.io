@@ -1,0 +1,44 @@
+ヘッダー
+<link rel="stylesheet" href="assets/common.css">
+<div id="common-header"></div>
+<script>
+  fetch("assets/header.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("common-header").innerHTML = html;
+    });
+</script>
+
+フッター
+<div id="common-footer"></div>
+<script>
+  fetch("assets/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("common-footer").innerHTML = html;
+    });
+</script>
+<script src="/docs/assets/common.js" defer></script>
+
+英語ヘッダー
+<div id="common-header"></div>
+<script>
+  fetch("../assets-en/header.html")
+    .then(res => res.text())
+    .then(html => {
+      const headerContainer = document.getElementById("common-header");
+      headerContainer.innerHTML = html;
+
+    });
+</script>
+
+英語フッター(jsが違うだけ)
+<div id="common-footer"></div>
+<script>
+  fetch("../assets-en/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("common-footer").innerHTML = html;
+    });
+</script>
+<script src="../assets-en/common.js" defer></script>
