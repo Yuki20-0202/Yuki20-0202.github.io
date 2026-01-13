@@ -1548,5 +1548,112 @@ footer {
     }
 }
 
+/* ================================================= */
+/* 京都ページ修正：上下分割レイアウト（詳細が下に展開） */
+/* ================================================= */
+
+.spot-list-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* カード全体の設定（縦並びにする） */
+.spot-card {
+    display: flex;
+    flex-direction: column; /* 要素を上から下に積む */
+    background-color: white;
+    overflow: hidden;
+    /* transitionなどは削除（自然に伸ばすため） */
+}
+
+/* --- 上段エリア（写真と基本情報） --- */
+.spot-top-row {
+    display: flex;       /* ここだけ横並び */
+    flex-direction: row;
+    height: 220px;       /* ★ここで写真エリアの高さを固定します */
+}
+
+/* 左側：画像エリア (1/3) */
+.spot-image {
+    width: 35%;          /* 幅 */
+    height: 100%;        /* 高さいっぱい */
+    background-color: #ddd;
+}
+
+.spot-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;   /* 枠に合わせてトリミング */
+    display: block;
+}
+
+/* 右側：基本情報エリア (2/3) */
+.spot-content-basic {
+    width: 65%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 上下中央寄せ */
+}
+
+.spot-content-basic h2 {
+    margin-top: 0;
+    color: #1f4725;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+/* --- 下段エリア（詳細情報） --- */
+.more-info {
+    display: none;       /* 最初は隠す */
+    padding: 0 20px 20px 20px; /* 余白 */
+    background-color: #fff;
+    border-top: 1px dashed #ddd; /* 上の段との区切り線 */
+    animation: slideDown 0.4s ease;
+}
+
+/* ふわっと下りてくるアニメーション */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- ボタンのデザイン --- */
+.detail-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #f4f8fb; /* 薄いグレー */
+    border: none;
+    border-top: 1px solid #eee;
+    color: #1f4725;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-align: center;
+}
+
+.detail-btn:hover {
+    background-color: #e8f5e9; /* ホバー時は薄い緑 */
+}
+
+/* --- スマホ対応 --- */
+@media (max-width: 600px) {
+    .spot-top-row {
+        flex-direction: column; /* スマホでは縦並びに戻す */
+        height: auto;           /* 高さは自動に */
+    }
+    .spot-image {
+        width: 100%;
+        height: 200px;
+    }
+    .spot-content-basic {
+        width: 100%;
+        padding: 15px;
+    }
+}
 
 
