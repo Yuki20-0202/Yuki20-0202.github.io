@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>送信完了しました</title>
+  <link rel="stylesheet" href="post.css">
+  <link rel="stylesheet" href="../assets/common.css">
+</head>
+<body>
+  <div id="common-header"></div>
+  <script>
+    fetch("../assets/header.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("common-header").innerHTML = html;
+      });
+  </script>
+
+  <main>
+    <h1 class="maintext">✅ 送信完了しました</h1>
+    <p>掲載依頼の送信が完了しました。ご依頼ありがとうございます。</p>
+    <p>担当者より連絡がある場合がありますので、しばらくお待ちください。</p>
+    <p><a href="post.html">戻る</a> | <a href="../index.html">トップへ戻る</a></p>
+  </main>
+
+  <div id="common-footer"></div>
+  <script>
+    fetch("../assets/footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("common-footer").innerHTML = html;
+      });
+  </script>
+</body>
+</html>

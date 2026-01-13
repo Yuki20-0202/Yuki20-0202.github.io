@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>電車での過ごし方</title>
+    <link rel="stylesheet" href="20css.css">
+    <link rel="stylesheet" href="../assets/common.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="page-manner-detail">
+
+<div id="common-header"></div>
+<script>
+  fetch("../assets/header.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("common-header").innerHTML = html;
+    });
+</script>
+
+    <header1>
+        <h1 class="site-title" id="densya-page-title">電車でのマナー</h1>
+        <div class="header-btns">
+            <a href="mana.html" class="lang-btn" id="btn-back-manner">マナーガイド</a>
+            <button id="lang-btn" class="lang-btn">English</button>
+        </div>
+    </header1>
+
+    <main>
+        <h2 class="page-heading" id="densya-heading">みんなで快適に移動しよう</h2>
+        <p class="page-desc" id="densya-desc">日本の電車内では「周りの人に迷惑をかけない」ことが最も大切です。</p>
+
+        <section class="densya-rules">
+            <h3 class="section-title-blue" id="densya-rule-title">車内の基本ルール</h3>
+            
+            <div class="densya-grid">
+                
+                <div class="densya-card">
+                    <div class="densya-icon">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+                    <h4 id="d-rule-1-title">携帯電話・スマホ</h4>
+                    <p id="d-rule-1-desc">
+                        マナーモードに設定し、通話は控えましょう。動画や音楽はイヤホンをして音漏れに注意します。
+                    </p>
+                </div>
+
+                <div class="densya-card">
+                    <div class="densya-icon">
+                        <i class="fa-solid fa-users-line"></i>
+                    </div>
+                    <h4 id="d-rule-2-title">整列乗車</h4>
+                    <p id="d-rule-2-desc">
+                        ホームでは列に並んで待ちます。降りる人が全員降りてから乗り込みましょう。
+                    </p>
+                </div>
+
+                <div class="densya-card">
+                    <div class="densya-icon">
+                        <i class="fa-solid fa-suitcase"></i>
+                    </div>
+                    <h4 id="d-rule-3-title">大きな荷物</h4>
+                    <p id="d-rule-3-desc">
+                        リュックサックは前に抱えるか、網棚に置きます。通路を塞がないように配慮しましょう。
+                    </p>
+                </div>
+
+                <div class="densya-card">
+                    <div class="densya-icon">
+                        <i class="fa-solid fa-burger"></i>
+                    </div>
+                    <h4 id="d-rule-4-title">飲食について</h4>
+                    <p id="d-rule-4-desc">
+                        新幹線などを除き、普通の電車内で食事をするのは控えましょう。飲み物はOKです。
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="priority-seat-section">
+            <div class="priority-box">
+                <div class="priority-header">
+                    <i class="fa-solid fa-person-cane"></i>
+                    <h3 id="priority-title">優先席 (Priority Seat)</h3>
+                </div>
+                <div class="priority-content">
+                    <p id="priority-desc">
+                        お年寄り、体の不自由な方、妊娠中の方、小さなお子様連れの方のための席です。
+                        ステッカーが貼ってある席は、必要な人に譲りましょう。
+                    </p>
+                    <div class="priority-icons">
+                        <i class="fa-solid fa-person-pregnant"></i>
+                        <i class="fa-solid fa-person-breastfeeding"></i>
+                        <i class="fa-solid fa-crutch"></i>
+                        <i class="fa-solid fa-wheelchair"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="common-footer"></div>
+    <script>
+      fetch("../assets/footer.html")
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("common-footer").innerHTML = html;
+        });
+    </script>
+
+    <script src="lang-switch.js"></script>
+
+</body>
+
+</html>

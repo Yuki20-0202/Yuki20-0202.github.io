@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to take Onsen</title>
+    <link rel="stylesheet" href="20css.css">
+    <link rel="stylesheet" href="../assets-en/common.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="page-manner-detail">
+
+<div id="common-header"></div>
+<script>
+  fetch("../assets-en/header.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("common-header").innerHTML = html;
+    });
+</script>
+
+    <header1>
+        <h1 class="site-title" id="sentou-page-title">How to take Onsen</h1>
+        <div class="header-btns">
+            <a href="mana.html" class="lang-btn" id="btn-back-manner">Manner Guide</a>
+            <button id="lang-btn" class="lang-btn">日本語</button>
+        </div>
+    </header1>
+
+    <main>
+        <h2 class="page-heading" id="sentou-heading">Relax Body and Mind</h2>
+        <p class="page-desc" id="sentou-desc">Here are the basic steps for bathing so everyone can use it comfortably.</p>
+
+        <section class="howto-section">
+            <h3 id="sentou_flow_title">Bathing Flow</h3>
+            <ul>
+                <li id="flow_1_title">Take off clothes - Take off all clothes in the changing room. Wearing swimsuits or underwear is prohibited.</li>
+                <li id="flow_2_title">Wash your body - Wash hair and body before entering the bathtub.</li>
+                <li id="flow_3_title">Soak in the bath - Do not put your towel in the water.</li>
+                <li id="flow_4_title">Dry your body - Lightly dry your body before returning to the changing room.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2025 TABISUKE
+    </footer>
+
+<script src="../assets-en/common.js" defer></script>
+<script src="lang-switch.js"></script>
+<script>
+if (typeof currentLang !== 'undefined') {
+    currentLang = 'en';
+    if (typeof updateText === 'function') updateText();
+}
+</script>
+
+<div id="common-footer"></div>
+<script>
+  fetch("../assets-en/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("common-footer").innerHTML = html;
+    });
+</script>
+
+</body>
+</html>
