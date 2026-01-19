@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Results</title>
+  <link rel="stylesheet" href="/assets/common.css">
+  <link rel="stylesheet" href="/search/search.css">
+</head>
+<body>
+  <div id="common-header"></div>
+  <script>
+    fetch("/assets-en/header.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("common-header").innerHTML = html;
+      });
+  </script>
+
+  <main>
+    <div class="search-heading-wrapper">
+      <div class="accent-bar"></div>
+      <h2 id="search-heading">Search Results</h2>
+    </div>
+    <div id="filters"></div>
+    <div id="results"></div>
+  </main>
+
+<script src="/search/search-results.js" defer></script>
+
+  <div id="common-footer"></div>
+  <script>
+    fetch("/assets-en/footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("common-footer").innerHTML = html;
+      });
+  </script>
+  <script src="/assets-en/common.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>観光地求人情報</title>
+  <link rel="stylesheet" href="jobs1_style.css">
+  <link rel="stylesheet" href="../assets/common.css">
+</head>
+<body>
+
+<div id="common-header"></div>
+<script>
+  fetch("../assets/header.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("common-header").innerHTML = html;
+    });
+</script>
+<div class="translate-box">
+  <div class="translate-text">
+    <p>このページは日本語ページです。英語ページは右のボタンを押してください。</p>
+    <p>This page is in Japanese. Please click the button on the right for the English version.</p>
+  </div>
+  <button onclick="location.href='jobs1-en.html'">🌐 English version</button>
+</div>
+<div class="titlesite">
+  <h1>観光地求人情報</h1>
+  <p class="subtitle">地域の魅力を支えるお仕事を見つけよう！</p>
+  <a href="post.html" class="scroll-to-post">求人を掲載したい方はこちら</a>
+</div>
+<div class="search-box">
+  <label for="job-search" class="search-label">🔍 検索フィルター</label>
+  <input type="text" id="job-search" placeholder="例：温泉、京都、短期など">
+  <button id="search-button">検索</button>
+</div>
+<div class="filter-toggle">
+  <span class="filter-label">🧭 雇用条件で絞り込む：</span>
+  <button id="filter-toggle-button">≡</button>
+</div>
+
+<div id="filter-panel" class="filter-panel" style="display: none;">
+<details>
+  <summary>🕒 時間帯</summary>
+  <div class="time-range">
+    <label>開始：
+      <select id="start-time">
+        <option value="">--</option>
+        <option value="0">0:00</option>
+        <option value="1">1:00</option>
+        <option value="2">2:00</option>
+        <option value="3">3:00</option>
+        <option value="4">4:00</option>
+        <option value="5">5:00</option>
+        <option value="6">6:00</option>
+        <option value="7">7:00</option>
+        <option value="8">8:00</option>
+        <option value="9">9:00</option>
+        <option value="10">10:00</option>
+        <option value="11">11:00</option>
+        <option value="12">12:00</option>
+        <option value="13">13:00</option>
+        <option value="14">14:00</option>
+        <option value="15">15:00</option>
+        <option value="16">16:00</option>
+        <option value="17">17:00</option>
+        <option value="18">18:00</option>
+        <option value="19">19:00</option>
+        <option value="20">20:00</option>
+        <option value="21">21:00</option>
+        <option value="22">22:00</option>
+        <option value="23">23:00</option>
+      </select>
+    </label>
+    <label>終了：
+      <select id="end-time">
+        <option value="">--</option>
+        <option value="1">1:00</option>
+        <option value="2">2:00</option>
+        <option value="3">3:00</option>
+        <option value="4">4:00</option>
+        <option value="5">5:00</option>
+        <option value="6">6:00</option>
+        <option value="7">7:00</option>
+        <option value="8">8:00</option>
+        <option value="9">9:00</option>
+        <option value="10">10:00</option>
+        <option value="11">11:00</option>
+        <option value="12">12:00</option>
+        <option value="13">13:00</option>
+        <option value="14">14:00</option>
+        <option value="15">15:00</option>
+        <option value="16">16:00</option>
+        <option value="17">17:00</option>
+        <option value="18">18:00</option>
+        <option value="19">19:00</option>
+        <option value="20">20:00</option>
+        <option value="21">21:00</option>
+        <option value="22">22:00</option>
+        <option value="23">23:00</option>
+        <option value="24">24:00</option>
+      </select>
+    </label>
+  </div>
+</details>
+
+  <details>
+  <summary>📅 期間</summary>
+  <div class="month-range">
+    <label>開始年：
+      <select id="start-year">
+        <option value="">--</option>
+        <option value="2025">2025年</option>
+        <option value="2026">2026年</option>
+      </select>
+    </label>
+    <label>開始月：
+      <select id="start-month">
+        <option value="">--</option>
+        <option value="1">1月</option>
+        <option value="2">2月</option>
+        <option value="3">3月</option>
+        <option value="4">4月</option>
+        <option value="5">5月</option>
+        <option value="6">6月</option>
+        <option value="7">7月</option>
+        <option value="8">8月</option>
+        <option value="9">9月</option>
+        <option value="10">10月</option>
+        <option value="11">11月</option>
+        <option value="12">12月</option>
+      </select>
+    </label>
+    <label>終了年：
+      <select id="end-year">
+        <option value="">--</option>
+        <option value="2025">2025年</option>
+        <option value="2026">2026年</option>
+      </select>
+    </label>
+    <label>終了月：
+      <select id="end-month">
+        <option value="">--</option>
+        <option value="1">1月</option>
+        <option value="2">2月</option>
+        <option value="3">3月</option>
+        <option value="4">4月</option>
+        <option value="5">5月</option>
+        <option value="6">6月</option>
+        <option value="7">7月</option>
+        <option value="8">8月</option>
+        <option value="9">9月</option>
+        <option value="10">10月</option>
+        <option value="11">11月</option>
+        <option value="12">12月</option>
+      </select>
+    </label>
+  </div>
+</details>
+
+
+  <details>
+    <summary>🧳 勤務形態</summary>
+    <label><input type="checkbox" class="filter-checkbox" value="シフト制"> シフト制</label>
+    <label><input type="checkbox" class="filter-checkbox" value="週3"> 週3〜OK</label>
+    <label><input type="checkbox" class="filter-checkbox" value="寮"> 寮あり</label>
+  </details>
+</div>
+
+
+<main>
+    <section>
+      <h2>💼 求人一覧</h2>
+
+<div class="job-card">
+  <h3 class="job-title">一緒に働きませんか？温泉旅館スタッフ募集！</h3>
+  <p class="job-desc">接客（チェックイン・配膳）、客室清掃、調理補助などを担当していただきます。</p>
+  <ul class="job-info">
+    <li><strong>募集時間：</strong>8:00〜17:00（休憩1時間／週5日勤務）</li>
+    <li><strong>給料：</strong>時給1,100円〜（昇給あり・交通費支給）</li>
+    <li><strong>期間：</strong>2025年11月〜2026年3月</li>
+    <li><strong>住所：</strong>群馬県渋川市伊香保町1234</li>
+  </ul>
+  <div class="job-company">♨️ 湯の里旅館</div>
+  <button class="detail-button">ホームページはこちら</button>
+</div>
+<div class="job-card">
+  <h3 class="job-title">地域の魅力を伝えるお仕事、始めませんか？</h3>
+  <p class="job-desc">観光案内所での接客業務を中心に、観光客への道案内や施設紹介、パンフレットの配布、簡単な翻訳対応などを行っていただきます。英語・中国語スキル歓迎！</p>
+  <ul class="job-info">
+    <li><strong>募集時間：</strong>9:00〜18:00（シフト制／週休2日）</li>
+    <li><strong>給料：</strong>時給1,200円（語学手当あり）</li>
+    <li><strong>期間：</strong>通年（契約更新あり）</li>
+    <li><strong>住所：</strong>京都府京都市東山区祇園町北側100番地</li>
+  </ul>
+  <button class="detail-button">ホームページはこちら</button>
+  <div class="job-company">🌸 京都観光案内センター</div>
+</div>
+
+<div class="job-card">
+  <h3 class="job-title">旅の思い出を届けるお手伝い、しませんか？</h3>
+  <p class="job-desc">観光地のお土産店で、レジ対応・品出し・陳列整備・接客をお願いします。おすすめ商品の紹介など、旅の思い出づくりをサポートするやりがいのある仕事です。</p>
+  <ul class="job-info">
+    <li><strong>募集時間：</strong>10:00〜16:00（週3日〜OK／土日歓迎）</li>
+    <li><strong>給料：</strong>時給1,050円（交通費一部支給）</li>
+    <li><strong>期間：</strong>2025年12月〜2026年2月（短期）</li>
+    <li><strong>住所：</strong>神奈川県足柄下郡箱根町湯本456-1</li>
+  </ul>
+  <button class="detail-button">Google Mapはこちら</button>
+  <div class="job-company">🎁 箱根みやげ本舗</div>
+</div>
+
+<div class="job-card">
+  <h3 class="job-title">雪と笑顔に囲まれて働きませんか？</h3>
+  <p class="job-desc">スキー場でのリフト操作・安全確認・乗降サポート・ゲスト案内などを担当していただきます。体力は必要ですが、冬ならではの魅力が詰まった職場です！</p>
+  <ul class="job-info">
+    <li><strong>募集時間：</strong>7:30〜16:30（休憩1時間／週5〜6日）</li>
+    <li><strong>給料：</strong>日給9,000円（寮完備・リフト券無料）</li>
+    <li><strong>期間：</strong>2025年12月〜2026年3月（冬季限定）</li>
+    <li><strong>住所：</strong>新潟県妙高市田切216番地</li>
+  </ul>
+  <button class="detail-button">ホームページはこちら</button>
+  <div class="job-company">⛷️ 妙高高原スキーリゾート</div>
+</div>
+
+<div class="job-card">
+  <h3 class="job-title">自然の中で働こう！キャンプ場スタッフ募集</h3>
+  <p class="job-desc">
+    テント設営のサポートや受付業務、清掃、イベント運営補助などを担当していただきます。アウトドアが好きな方にぴったり！未経験でも自然が好きなら大歓迎です。
+  </p>
+  <ul class="job-info">
+    <li><strong>募集時間：</strong>6:00〜15:00（シフト制）</li>
+    <li><strong>給料：</strong>時給1,100円</li>
+    <li><strong>期間：</strong>2026年3月〜2026年5月（春夏限定）</li>
+    <li><strong>住所：</strong>山梨県南都留郡富士河口湖町大石1234</li>
+  </ul>
+  <button class="detail-button">Google Mapはこちら</button>
+  <div class="job-company">🏕️ 富士山麓キャンプビレッジ</div>
+</div>
+
+<div class="job-card">
+  <h3 class="job-title">伝統文化を支える！和菓子店スタッフ</h3>
+  <p class="job-desc">
+    店頭での接客・販売、商品の包装、簡単な製造補助をお願いします。和の雰囲気が好きな方、丁寧な対応が得意な方におすすめ。外国人観光客も多く、語学スキルも活かせます。
+  </p>
+  <ul class="job-info">
+    <li><strong>募集時間：</strong>11:00〜19:00（週4日〜OK）</li>
+    <li><strong>給料：</strong>時給1,150円</li>
+    <li><strong>期間：</strong>通年（長期歓迎）</li>
+    <li><strong>住所：</strong>石川県金沢市東山2丁目15-8</li>
+  </ul>
+  <button class="detail-button">ホームページはこちら</button>
+  <div class="job-company">🍡 金沢 和菓子処 つばき庵</div>
+</div>
+      </section>
+</main>
+  <button class="scroll-to-top" style="display: none;">📍 一番上まで戻る</button>
+<div id="common-footer"></div>
+<script>
+  fetch("../assets/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("common-footer").innerHTML = html;
+    });
+</script>
+  <script src="../assets/common.js" defer></script>
+  <script src="jobs1_cript.js"></script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Post a Job Listing</title>
+  <link rel="stylesheet" href="post.css">
+  <link rel="stylesheet" href="../assets-en/common.css">
+</head>
+<body>
+  <div id="common-header"></div>
+  <script>
+    fetch("../assets-en/header.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("common-header").innerHTML = html;
+      });
+  </script>
+
+  <div class="translate-box">
+    <div class="translate-text">
+      <p>This page is in English. Click the button on the right for the Japanese version.</p>
+      <p>このページは英語版です。日本語ページは右のボタンを押してください。</p>
+    </div>
+    <button onclick="location.href='post.html'">🌐 日本語ページへ</button>
+  </div>
+
+  <main>
+    <h1 class="maintext">📝 Submit a Job Listing</h1>
+    <p class="required-note">※ Fields marked with <span style="color: red;">*</span> are required.</p>
+
+    <form class="post-request" id="job-form">
+
+      <!-- Job Type -->
+      <label for="job-type">Job Category<span style="color: red;">*</span></label>
+      <select id="job-type" required>
+        <option value="">Please select</option>
+        <option value="Inn/Hotel Staff">Inn/Hotel Staff</option>
+        <option value="Tourist Info/Reception">Tourist Info/Reception</option>
+        <option value="Souvenir Sales">Souvenir Sales</option>
+        <option value="Restaurant Staff">Restaurant Staff</option>
+        <option value="Ski Resort Staff">Ski Resort Staff</option>
+        <option value="Guide/Experience Support">Guide/Experience Support</option>
+        <option value="Other">Other</option>
+      </select>
+      <label for="job-type-other" id="label-job-type-other" style="display: none;">Please specify<span id="asterisk-job-type-other" style="color: red; display: none;">*</span></label>
+      <input type="text" id="job-type-other" placeholder="Enter other job type" style="display: none;">
+
+      <!-- Wage -->
+      <label for="job-wage">Hourly Wage (within ±¥500)<span style="color: red;">*</span></label>
+      <select id="job-wage" required>
+        <option value="">Please select</option>
+        <option value="1000">¥1000</option>
+        <option value="2000">¥2000</option>
+        <option value="3000">¥3000</option>
+        <option value="4000">¥4000</option>
+        <option value="4000up">Over ¥4000</option>
+        <option value="conditional">Other conditions</option>
+      </select>
+      <label for="job-wage-other" id="label-job-wage-other" style="display: none;">Please specify<span id="asterisk-job-wage-other" style="color: red; display: none;">*</span></label>
+      <input type="text" id="job-wage-other" placeholder="Enter other wage condition" style="display: none;">
+
+      <!-- Working Hours -->
+      <label for="job-hours-start">Working Hours<span style="color: red;">*</span></label>
+      <div class="job-hours-row" style="display:flex;align-items:center;gap:0.5rem;">
+        <select id="job-hours-start" required style="width:120px;">
+          <option value="">Start</option>
+        </select>
+        <span class="tilde">–</span>
+        <select id="job-hours-end" required style="width:120px;">
+          <option value="">End</option>
+        </select>
+      </div>
+
+      <!-- Estimated Duration -->
+      <label for="work-hours">Estimated Work Duration<span style="color: red;">*</span></label>
+      <select id="work-hours" required>
+        <option value="">Please select</option>
+        <option value="<=4">Up to 4 hours</option>
+        <option value="4-6">4–6 hours</option>
+        <option value="6-8">6–8 hours</option>
+        <option value=">8">Over 8 hours (includes overtime)</option>
+      </select>
+
+      <!-- Overtime Consent -->
+      <div id="overtime-consent" class="overtime-consent" style="display:none;margin-top:1em;border:1px solid #ccc;padding:10px;border-radius:6px;background:#fff;">
+        <strong>Consent Regarding Labor Standards Act</strong>
+        <p style="margin:0.5em 0;font-size:0.95em;color:#333;">If working hours exceed 8 hours, please review the relevant articles of the Labor Standards Act below and confirm your agreement. (Scroll to read)</p>
+        <div class="overtime-slider" style="display:block;max-height:220px;overflow-y:auto;padding:10px 0;-webkit-overflow-scrolling:touch;">
+          <div class="slide" style="min-height:120px;border-left:3px solid #4a90e2;padding:10px;background:#fafafa;border-radius:4px;">
+            <h4>Article 32: Working Hours</h4>
+            <p>Working hours shall not exceed 8 hours per day or 40 hours per week in principle.</p>
+          </div>
+          <div class="slide" style="min-height:120px;border-left:3px solid #4a90e2;padding:10px;background:#fafafa;border-radius:4px;">
+            <h4>Article 36: Overtime and Holiday Work</h4>
+            <p>Employers must conclude an agreement (so-called Article 36 Agreement) with a labor union or a representative of the majority of workers to allow overtime or holiday work.</p>
+          </div>
+          <div class="slide" style="min-height:120px;border-left:3px solid #4a90e2;padding:10px;background:#fafafa;border-radius:4px;">
+            <h4>Article 37: Overtime Pay</h4>
+            <p>Specifies premium wages for overtime, holiday, and late-night work.</p>
+          </div>
+        </div>
+        <label class="inline-checkbox">
+          <span>I agree to the above</span>
+          <input type="checkbox" id="overtime-allowed">
+        </label>
+      </div>
+
+      <!-- Long-term Preference -->
+      <div class="form-group">
+        <label for="long-term">Long-term Employment Preference<span style="color: red;">*</span></label>
+        <select id="long-term" name="long-term" required>
+          <option value="">Please select</option>
+          <option value="希望する">Prefer long-term</option>
+          <option value="できるなら希望">Prefer if possible</option>
+          <option value="希望しない">Not preferred</option>
+        </select>
+      </div>
+
+      <!-- Region -->
+      <label for="region-area">Region<span style="color: red;">*</span></label> 
+      <select id="region-area" required>
+        <option value="">Please select</option>
+        <option value="Hokkaido/Tohoku">Hokkaido / Tohoku</option>
+        <option value="Kanto">Kanto</option>
+        <option value="Chubu">Chubu</option>
+        <option value="Kinki">Kinki</option>
+        <option value="Chugoku">Chugoku</option>
+        <option value="Shikoku">Shikoku</option>
+        <option value="Kyushu/Okinawa">Kyushu / Okinawa</option>
+      </select>
+
+      <!-- Prefecture -->
+      <label for="region-pref">Prefecture<span style="color: red;">*</span></label>
+      <select id="region-pref" required>
+        <option value="">Please select a region first</option>
+      </select>
+
+      <!-- Facility Name -->
+      <label for="facility">Facility / Store Name<span style="color: red;">*</span></label>
+      <input type="text" id="facility" placeholder="e.g. Yunonosato Ryokan" required>
+
+      <!-- Address -->
+      <label for="address">Address (excluding prefecture)<span style="color: red;">*</span></label>
+      <input type="text" id="address" placeholder="e.g. 3-10-5 Asama Onsen, Matsumoto City" required>
+
+      <!-- Contact -->
+      <label for="contact">Contact (Phone Number)<span style="color: red;">*</span></label>
+      <input type="text" id="contact" placeholder="e.g. 09012345678" required>
+
+      <!-- Website (Optional) -->
+      <label for="website">Website (Optional)</label>
+      <input type="url" id="website" placeholder="e.g. https://example.com">
+
+      <!-- Additional Comments (Optional) -->
+      <label for="description">Additional Comments (Optional)</label>
+      <textarea id="description" rows="4"></textarea>
+
+      <button type="submit">Submit Job Listing</button>
+    </form>
+  </main>
+
+  <div id="common-footer"></div>
+  <script>
+    fetch("../assets/footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("common-footer").innerHTML = html;
+      });
+  </script>
+  <script src="../assets-en/common.js" defer></script>
+  <script src="post.js" defer></script>
+</body>
+</html>
+
